@@ -19,7 +19,7 @@ Here is a potentially typical day at work:
 
 1.  People realize there is a catastrophic bug (a SEV) in production (real users are experiencing it! AHHHH)
 
-2.  A high-priority issue is created
+2.  An high-priority issue is created
 
 3.  Someone triages the problem by finding the commit that introduced the bug
 
@@ -29,7 +29,7 @@ Here is a potentially typical day at work:
 
 6.  Buggy-Person-of-Shame rewrites/reworks code to do what they originally intended but now without bugs and makes a new commit
 
-7.  Reset-ed commits are re-applied to the production such that everything is great and wonderful again
+7.  Reset-ed commits are re-applied to the production branch such that everything is great and wonderful again
 
 8.  Things are back to normal
 
@@ -150,6 +150,8 @@ Untracked files:
 nothing added to commit but untracked files present
 ```
 
+So currently hello.txt is untracked by git.  Let's use the `git add` command to track it!
+
 ```
 $ git add hello.txt
 On branch master
@@ -160,6 +162,8 @@ Changes to be committed:
 	new file:   hello.txt
 ```
 
+Cool, not its tracked but you haven't committed any changes.
+
 ```
 $ g commit -m "Created hello.txt which contains a greeting"
 [master (root-commit) f6f7407] Created hello.txt which contains a greeting
@@ -167,7 +171,17 @@ $ g commit -m "Created hello.txt which contains a greeting"
  create mode 100644 hello.txt
  ```
  
- If you type `git status` again, you'll notice we're kind of back to where we started.  That's because we made and now git is tracking the changes between your most recent commit and now.
+ Now git is tracking a file called hello.txt, and you have one commit with your initial changes to it.
+ 
+ If you type `git status` again, you'll notice we're kind of back to where we started.  That's because we made and now git is tracking the changes between your most recent commit and now.  This is the typical flow of using git:
+ 
+ 1.  Create file/make changes to file
+ 
+ 2.  `git add <file>`
+ 
+ 3.  `git commit -m "changes to <file>`
+ 
+ 
  
  Make any change to `hello.txt`.  Now that `hello.txt` is already being tracked, instead of `new file`, it'll say that it has been `modified`.    
  
@@ -207,25 +221,81 @@ $ g commit -m "Created hello.txt which contains a greeting"
  Here's on way to do that (use with caution):
  `$ git checkout -- hello.txt`
  
- Undo commit (use with caution):
+ However, if you want to undo something you've already committed (say your last commit):
+ 
+ Undo commit with `git reset` (use with caution):
  `$ git reset --soft HEAD~1 `
  
  Note: You can recover from undoing things (see http://stackoverflow.com/questions/2510276/undoing-git-reset)
  but you should be careful in general, because it can get complicated.
  
- TODO
--untracked
--unmodified
--modified
--staged
+ Okay cool, so git can be used to keep track of modifications you make to the files that it tracks.
     
 ####Pushing/Pulling Changes
-TODO:
-  - Break into small groups of 2-4 people.
-  - One person should create a new directory, and initialize a git repo in it
-  - Add a file
-  - Push to github
-  - Others should git clone, make changes, push/pull
+
+So far, you've only dealt with a local git repo.  But nowadays, most people use Github to have a *remote* repository (the hosted on Github itself) in addition to their local repository.  This especially makes sense if you're working in teams.  Each teammate has their own *local* git repo, but they all push to the same project repo on Github.
+
+Now:
+  - Break into small groups of 2-4 people with 1 *Leader*.
+  - *Leader* should create a new directory, and initialize a git repo in it.  Let's do this with github:
+  	1.  Create new repository with a README
+  	2.  Go to the repo's Settings --> Collaborators and add your teammates
+  - *Everyone* clone the repo:
+  `$ git clone https://github.com/[your-leader's-username]/[your-repository-name.git]`
+  - *Leader*: `$ touch introductions.py`, add + commit the file.  Then type `$ git push`
+  - *Everyone*: `$git pull`
+  
+  Cool!  So you use `$ git push` to update the Github repo with your changes, and `$git pull` to update your *local*   repo with the changes from the Github repo.
+  Now add introduce() to `introductions.py`:
+  ```
+    def introduce():
+      print "Hi! I'm <Your Name Here>."
+   ```
+   follow the add-commit-push flow, if you weren't the first person to push you'll see this:
+   ``` 	
+   $ git push
+	To https://github.com/[your-leader's-username]/[your-repository-name.git]
+ 	! [rejected]        master -> master (non-fast-forward)
+	...
+   ```
+   
+   This means that your teammates successfully *pushed* and now you are *behind the remote*.  
+   Pull in the changes: `$ git pull`
+   
+   You'll probably see this:
+   ```
+   $ git pull
+   Auto-merging introductions.py
+   CONFLICT (content): Merge conflict in introductions.py
+   Automatic merge failed; fix conflicts and then commit the result.
+   ```
+   
+   That means your changes are conflicting each other.  Open `introductions.py` and you'll see something like this:
+   
+   ```
+   <<<<<<< HEAD
+   def introduce():
+     print "Hi! I'm Fred."
+   =======
+   def introduce():
+     print "Hi! I'm George."
+   >>>>>>> [really long string of letters and numbers]
+   ```
+   
+   You'll have to manually fix this by removing the *conflict markers*.  
+   
+   Example:
+   ```
+   def introduceFred():
+     print "Hi! I'm Fred."
+
+   def introduceGeorge():
+     print "Hi! I'm George."
+   ```
+   
+   Sometimes conflicts are more complicated than removing the conflict markers as you'll only want to keep one version, or you'll need parts of both versions.
+   
+   TODO:
   - Changes on different branches/fork/pull request
   - remotes
 
