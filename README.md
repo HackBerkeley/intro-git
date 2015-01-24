@@ -16,14 +16,23 @@ It allows you to:
 - recover from screwed up or lost files
 
 Here is a potentially typical day at work:
+
 1.  People realize there is a catastrophic bug (a SEV) in production (real users are experiencing it! AHHHH)
+
 2.  An high-priority issue is created
+
 3.  Someone triages the problem by finding the commit that introduced the bug
+
 4.  They reset the current production version of the code to just before the buggy commit
+
 5.  Since your name/email is attached to your commits, they find the person who made the bad commit and yell at them/ tell them to fix it
+
 6.  Buggy-Person-of-Shame rewrites/reworks code to do what they originally intended but now without bugs and makes a new commit
+
 7.  Reset-ed commits are re-applied to the production such that everything is great and wonderful again
+
 8.  Things are back to normal
+
 9.  Repeat
 
 Disclosure:  I may have caused a SEV.
@@ -38,7 +47,7 @@ It provides:
 - bug tracking
 - feature requests
 
-Which makes Github *excellent* for collaboration.  The open-source community especially loves using Github.
+Which makes Github *excellent* for collaboration.  The open-source community especially loves using Github.  So do hackathon teammates, and probably people who want to see your code.
 
 ####Download/Install (Pre-requisite)
 1.  Please follow instructions for your OS here: `http://git-scm.com/book/en/v2/Getting-Started-Installing-Git`
