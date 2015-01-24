@@ -19,7 +19,7 @@ Here is a potentially typical day at work:
 
 1.  People realize there is a catastrophic bug (a SEV) in production (real users are experiencing it! AHHHH)
 
-2.  An high-priority issue is created
+2.  A high-priority issue is created
 
 3.  Someone triages the problem by finding the commit that introduced the bug
 
