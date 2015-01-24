@@ -326,13 +326,45 @@ $ python introductions.py
 ```
 your program will introduce everybody. Hurray! Now add-commit-push it up to github so your entire group can git pull and enjoy your finished project.
 
-#### Other Topics:
-TODO
-- remote
-- branch
-- merge
+## Other Topics:
+####Git Branching Summarized
+- A branch in Git is simply a lightweight movable pointer to your latest commit
+- The default branch name in Git is master
+- Each branch points to the latest commit made on that branch (each time you commit, it moves forward automatically)
 
-####Best Practices:
+**Create** a new branch <branchName> with `$ git branch <branchName>`
+- This creates a new pointer at the same commit you’re currently on.
+
+**Switch** to branch <branchName> with `$ git checkout <branchName>`
+
+**IMPORTANT: Switching branches CHANGES files in your working directory**:
+- If you switch to an older branch, your working directory will be reverted to look like it did the last time you committed on that branch
+- If Git cannot do this cleanly, it will not let you switch at all.
+
+**Update** a branch: All you have to do is check out the branch you wish to merge into and then run the git merge command:
+```
+$ git checkout master
+Switched to branch 'master'
+$ git merge hot-fix
+```
+This code switches to **branch** master, and then merges the changes from **branch** hot-fix into master.  Now master is up-to-date!
+
+####Remote Branches:
+**Remote branches** are references (pointers) to the state of branches in your **remote** repositories.
+- They take the form `(remote)/(branch)`
+- **Add** a remote: `$ git remote add REMOTE-NAME REMOTE-LOCATION`
+For example:  We add a **remote** called `origin` from the git repo `git://git.whatever.com`
+
+`$ git remote add origin git://git.whatever.com`
+- **List** remotes: `$ git remote -v`
+- **Push** to a remote:  `$ git push (remote) (branch)`
+For example, We push to a **branch** called `hot-fixes` on **remote** called `origin`
+
+`$ git push origin hot-fixes`
+
+Git branching and remotes are confusing!  The main thing to remember is that **when you switch branches, your code changes**! Use `$ git log` liberally if you forget which changes are on which branches.
+
+##Best Practices:
 
 - Write a descriptive commit message.
 - Break up commits into small changes.
