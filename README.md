@@ -5,6 +5,7 @@
 ####Download/Install (Pre-requisite)
 1.  Please follow instructions for your OS here: `http://git-scm.com/book/en/v2/Getting-Started-Installing-Git`
 2.  type `$ git` into your terminal.  It should spit out a usage statement and list of commands.
+3.  Create a `github` account.
 
 ####(Global) Config Settings
   `http://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup`
@@ -47,8 +48,8 @@
 
 ####What is Git?
 
-####Git Basics
-##Getting a Git Repository
+##Git Basics
+####Getting a Git Repository
   - Initializing a repository in an existing directory
     - You have a directory that you want to track with git --> use `git init`
     
@@ -74,7 +75,7 @@
     
     `git clone git@github.com:HackBerkeley/intro-git.git`
 
-##Making and Recording Changes to the Repo
+####Making and Recording Changes to the Repo
 Let's go back to temp.
 `$ cd temp`
 
@@ -132,6 +133,8 @@ $ g commit -m "Created hello.txt which contains a greeting"
  1 file changed, 1 insertion(+), 1 deletion(-)
  ```
  
+#### Looking at Changes, Commits, and Undoing Things
+
  If you want to see the commits you've made so far:
  ```
  $ git log
@@ -139,13 +142,47 @@ $ g commit -m "Created hello.txt which contains a greeting"
  Fri Jan 23 17:35:13 2015 -0800 f6f7407 Created hello.txt which contains a greeting  [Melanie Cebula]
  ```
  
+ If you haven't yet committed your changes, you can look at *what* you changed by performing git diff.  Go ahead and make some more changes to hello.txt.  In my case, my evil twin sister stole my laptop and furiously typed some things.  I want to know what she changed!!!
+ 
+ ```
+ $ git diff
+ diff --git i/hello.txt w/hello.txt
+ index 092bfb9..da5d515 100644
+ --- i/hello.txt
+ +++ w/hello.txt
+ @@ -1 +1,3 @@
+ -yo
+ +Hahahahahaha I'm Melanie's evil twin Emily and I changed the text of this file!
+ +Deal with it!!!!
+ +-Emily
+ ```
+ She deleted yo (in red) and added a message (in green).  How do we undo this?
+ Since this is unstaged, we basically need to un-modify the modified changes.
+ 
+ Here's on way to do that (use with caution):
+ `$ git checkout -- hello.txt`
+ 
+ Undo commit (use with caution):
+ `$ git reset --soft HEAD~1 `
+ 
+ Note: You can recover from undoing things (see http://stackoverflow.com/questions/2510276/undoing-git-reset)
+ but you should be careful in general, because it can get complicated.
+ 
+ TODO
 -untracked
 -unmodified
 -modified
 -staged
     
-
-
+####Pushing/Pulling Changes
+TODO:
+  - Break into small groups of 2-4 people.
+  - One person should create a new directory, and initialize a git repo in it
+  - Add a file
+  - Push to github
+  - Others should git clone, make changes, push/pull
+  - Changes on different branches/fork/pull request
+  - remotes
 
   add: add -a, add *, add *.java
   commit: -m "message"
@@ -163,6 +200,7 @@ $ g commit -m "Created hello.txt which contains a greeting"
   rebase
 
 ####Merge Conflicts
+TODO
 
 
   
