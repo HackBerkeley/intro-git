@@ -93,8 +93,6 @@ Which makes Github *excellent* for collaboration.  The open-source community esp
   
   As you use git more and more, you might be interested in aliasing commands (generally by making them shorter so you can type less!)  For more examples of ways to customize your git, you can look at an example gitconfig file under `git_resources`.
 
-####What is Git?
-
 ##Git Basics
 ####Getting a Git Repository
   - Initializing a repository in an existing directory
