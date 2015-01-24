@@ -333,8 +333,9 @@ TODO
 - Make master clean. Work on your own local branch and merge changes into master when you know they work.
 - Add your SSH key to github so you don't have to type in your user/pass every time.
 - git checkout [filename] to restore it to the state of the latest commit.
-- http://git-scm.com/book/en/Getting-Started-First-Time-Git-Setup Set up git properly the first time.
-
+- git stash if you want to (temporarily) undo changes (git stash apply to re-apply it)
+- use a .gitignore file in each repo (ignore node_modules in javascript, *.class files in java, *pyc for python files, etc)
+- consider git pull with automatic rebase: http://stevenharman.net/git-pull-with-automatic-rebase
 
 
   
