@@ -35,6 +35,12 @@ Here is a potentially typical day at work:
 
 9.  Repeat
 
+What if git wasn't used?
+- Don't know when the bug was introduced and what code caused it
+- Can't reset code to a previous version
+- Don't know who introduced the bug
+- Can't have different versions of code (production versus not-in-production)
+
 Disclosure:  I may have caused a SEV.
 
 ####What is github?
@@ -47,7 +53,7 @@ It provides:
 - bug tracking
 - feature requests
 
-Which makes Github *excellent* for collaboration.  The open-source community especially loves using Github.  So do hackathon teammates, and probably people who want to see your code.
+Which makes Github *excellent* for collaboration.  The open-source community especially loves using Github.  So do hackathon teammates, and technical recruiters.
 
 ####Download/Install (Pre-requisite)
 1.  Please follow instructions for your OS here: `http://git-scm.com/book/en/v2/Getting-Started-Installing-Git`
@@ -55,7 +61,6 @@ Which makes Github *excellent* for collaboration.  The open-source community esp
 3.  Create a `github` account.
 
 ####(Global) Config Settings
-  `http://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup`
   There are some settings (such as your information, what editor you use, aliases, etc) on git that you'll definitely want to configure.
   Git has a global `~/.gitconfig` and `~/.gitignore` that will affect all of your git repos.  You can also make repo-specific .gitignore files (for example, if you don't want to track .class files in a repo)
   
@@ -75,6 +80,7 @@ Which makes Github *excellent* for collaboration.  The open-source community esp
   
   If you want to make your git output be pretty and colorful, here's one way to do it:
   Open your git config: `vim ~/.gitconfig`
+  
   Add the following lines:
   
   ```
@@ -95,7 +101,7 @@ Which makes Github *excellent* for collaboration.  The open-source community esp
 
 ##Git Basics
 ####Getting a Git Repository
-  - Initializing a repository in an existing directory
+  - **Initializing a repository in an existing directory**
     - You have a directory that you want to track with git --> use `git init`
     
     ```
@@ -115,7 +121,7 @@ Which makes Github *excellent* for collaboration.  The open-source community esp
     fatal: Not a git repository (or any of the parent directories): .git
     ```
     
-  - Cloning an Existing Repository
+  - **Cloning an Existing Repository**
     - The git repository already exists on github (either you created or its public like this workshop repo!)
     
     `git clone git@github.com:HackBerkeley/intro-git.git`
@@ -124,7 +130,7 @@ Which makes Github *excellent* for collaboration.  The open-source community esp
 Let's go back to temp.
 `$ cd temp`
 
-You tell git what to keep *track* of (does it care if you make changes to it or not?), and then git will tell you if any of your *tracked* files have been *modified*, whether they are *staged* for commit, and what *branch* you are on.
+You tell git what to keep **track** of (does it care if you make changes to it or not?), and then git will tell you if any of your **tracked** files have been **modified**, whether they are **staged** for commit, and what **branch** you are on.
 
 ```
 $ git status
@@ -135,7 +141,7 @@ Initial commit
 nothing to commit
 ```
 
-We haven't done anything yet!  We're on the *master branch* by default, we haven't added any files or committed any changes.
+We haven't done anything yet!  We're on the **master branch** by default, we haven't added/staged any files or committed any changes.
 Create a file called `hello.txt` with the text `hello` in it.
 
 ```
@@ -150,7 +156,7 @@ Untracked files:
 nothing added to commit but untracked files present
 ```
 
-So currently hello.txt is untracked by git.  Let's use the `git add` command to track it!
+So currently hello.txt is **untracked** by git.  Let's use the `git add` command to track it!
 
 ```
 $ git add hello.txt
@@ -162,7 +168,7 @@ Changes to be committed:
 	new file:   hello.txt
 ```
 
-Cool, now its tracked but you haven't committed any changes.
+Cool, now its **tracked** but you haven't **committed** any changes.
 
 ```
 $ g commit -m "Created hello.txt which contains a greeting"
@@ -201,7 +207,7 @@ $ g commit -m "Created hello.txt which contains a greeting"
  Fri Jan 23 17:35:13 2015 -0800 f6f7407 Created hello.txt which contains a greeting  [Melanie Cebula]
  ```
  
- If you haven't yet committed your changes, you can look at *what* you changed by performing git diff.  Go ahead and make some more changes to hello.txt.  In my case, my evil twin sister stole my laptop and furiously typed some things.  I want to know what she changed!!!
+ If you haven't yet committed your changes, you can look at *what* you changed by performing `$ git diff`.  Go ahead and make some more changes to hello.txt.  In my case, my evil twin sister stole my laptop and furiously typed some things.  I want to know what she changed!!!
  
  ```
  $ git diff
@@ -216,12 +222,12 @@ $ g commit -m "Created hello.txt which contains a greeting"
  +-Emily
  ```
  She deleted yo (in red) and added a message (in green).  How do we undo this?
- Since this is unstaged, we basically need to un-modify the modified changes.
+ Since this is unstaged, we basically need to **un-modify the modified changes**.
  
  Here's on way to do that (use with caution):
  `$ git checkout -- hello.txt`
  
- However, if you want to undo something you've already committed (say your last commit):
+ However, if you want to **undo something you've already committed (say your last commit)**:
  
  Undo commit with `git reset` (use with caution):
  `$ git reset --soft HEAD~1 `
@@ -233,20 +239,20 @@ $ g commit -m "Created hello.txt which contains a greeting"
     
 ####Pushing/Pulling Changes
 
-So far, you've only dealt with a local git repo.  But nowadays, most people use Github to have a *remote* repository (the hosted on Github itself) in addition to their local repository.  This especially makes sense if you're working in teams.  Each teammate has their own *local* git repo, but they all push to the same project repo on Github.
+So far, you've only dealt with a local git repo.  But nowadays, most people use Github to have a **remote** repository (the hosted on Github itself) in addition to their local repository.  This especially makes sense if you're working in teams.  Each teammate has their own **local** git repo, but they all push to the same project repo on Github.
 
 Now:
-  - Break into small groups of 2-4 people with 1 *Leader*.
-  - *Leader* should create a new directory, and initialize a git repo in it.  Let's do this with github:
+  - Break into small groups of 2-4 people with 1 **Leader**.
+  - **Leader**: Create a new directory, and initialize a git repo in it.  Let's do this with github:
   	1.  Create new repository with a README
   	2.  Go to the repo's Settings --> Collaborators and add your teammates
-  - *Everyone* clone the repo:
+  - **Everyone**: clone the repo:
   `$ git clone https://github.com/[your-leader's-username]/[your-repository-name.git]`
-  - *Leader*: `$ touch introductions.py`, add + commit the file.  Then type `$ git push`
-  - *Everyone*: `$git pull`
+  - **Leader**: `$ touch introductions.py`, add + commit the file.  Then type `$ git push`
+  - **Everyone**: `$ git pull`
   
-  Cool!  So you use `$ git push` to update the Github repo with your changes, and `$git pull` to update your *local*   repo with the changes from the Github repo.
-  Now add introduce() to `introductions.py`:
+  Cool!  So you use `$ git push` to **update the Github repo** with your changes, and `$git pull` to **update your local repo** with the changes from the Github repo.
+  Now add `introduce()` to `introductions.py`:
   ```
     def introduce():
       print "Hi! I'm <Your Name Here>."
@@ -259,7 +265,7 @@ Now:
 	...
    ```
    
-   This means that your teammates successfully *pushed* and now you are *behind the remote*.  
+   This means that your teammates successfully **pushed** and now you are **behind the remote** repo.  
    Pull in the changes: `$ git pull`
    
    You'll probably see this:
@@ -270,7 +276,7 @@ Now:
    Automatic merge failed; fix conflicts and then commit the result.
    ```
    
-   That means your changes are conflicting each other.  Open `introductions.py` and you'll see something like this:
+   That means your changes are **conflicting** each other.  Open `introductions.py` and you'll see something like this:
    
    ```
    <<<<<<< HEAD
@@ -282,7 +288,7 @@ Now:
    >>>>>>> [really long string of letters and numbers]
    ```
    
-   You'll have to manually fix this by removing the *conflict markers*.  
+   You'll have to manually fix this by removing the **conflict markers**.  
    
    Example:
    ```
@@ -297,7 +303,7 @@ Now:
    
    Now do ye olde add-commit-push sequence again and all should be well.
    
-   **Leader**:  Once everybody has collected their introduceName() functions and pushed up to the repositories, add these lines at the bottom.
+   **Leader**:  Once everybody has collected their `introduceName()` functions and pushed up to the repositories, add these lines at the bottom.
 ```
 def main():
     introducePersonA()
@@ -308,7 +314,7 @@ if __name__ == "__main__":
     main()
 ```
 
-Basically, write a function main() that calls the introduce functions for everybody in your group, then add that last if statement at the bottom that calls main().
+Basically, write a `function main()` that calls the introduce functions for everybody in your group, then add that last if statement at the bottom that calls main().
 
 If you run
 ```
