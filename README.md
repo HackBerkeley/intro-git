@@ -162,7 +162,7 @@ Changes to be committed:
 	new file:   hello.txt
 ```
 
-Cool, not its tracked but you haven't committed any changes.
+Cool, now its tracked but you haven't committed any changes.
 
 ```
 $ g commit -m "Created hello.txt which contains a greeting"
@@ -325,6 +325,15 @@ TODO
 - remote
 - branch
 - merge
+
+####Best Practices:
+
+- Write a descriptive commit message.
+- Break up commits into small changes.
+- Make master clean. Work on your own local branch and merge changes into master when you know they work.
+- Add your SSH key to github so you don't have to type in your user/pass every time.
+- git checkout [filename] to restore it to the state of the latest commit.
+- http://git-scm.com/book/en/Getting-Started-First-Time-Git-Setup Set up git properly the first time.
 
 
 
