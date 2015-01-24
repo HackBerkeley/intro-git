@@ -295,27 +295,37 @@ Now:
    
    Sometimes conflicts are more complicated than removing the conflict markers as you'll only want to keep one version, or you'll need parts of both versions.
    
-   TODO:
-  - Changes on different branches/fork/pull request
-  - remotes
+   Now do ye olde add-commit-push sequence again and all should be well.
+   
+   **Leader**:  Once everybody has collected their introduceName() functions and pushed up to the repositories, add these lines at the bottom.
+```
+def main():
+    introducePersonA()
+    introducePersonB()
+    introducePersonC()
 
-  add: add -a, add *, add *.java
-  commit: -m "message"
-  clone
-  remote (add remote <branch>) (-v)
-  pull: --rebase
-  push: -f
-  reset: --soft
-  log:
-  reflog
-  branch:
-  checkout:
-  merge:
-  forks
-  rebase
+if __name__ == "__main__":
+    main()
+```
 
-####Merge Conflicts
+Basically, write a function main() that calls the introduce functions for everybody in your group, then add that last if statement at the bottom that calls main().
+
+If you run
+```
+$ python introductions.py
+"Hi my name is Ron!"
+"Hi my name is Ginny!"
+"Hi my name is Fred!"
+"Hi my name is George!"
+```
+your program will introduce everybody. Hurray! Now add-commit-push it up to github so your entire group can git pull and enjoy your finished project.
+
+#### Other Topics:
 TODO
+- remote
+- branch
+- merge
+
 
 
   
