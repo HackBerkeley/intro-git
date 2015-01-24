@@ -341,7 +341,7 @@ your program will introduce everybody. Hurray! Now add-commit-push it up to gith
 - If you switch to an older branch, your working directory will be reverted to look like it did the last time you committed on that branch
 - If Git cannot do this cleanly, it will not let you switch at all.
 
-**Update** a branch: All you have to do is check out the branch you wish to merge into and then run the git merge command:
+**Update** a branch: All you have to do is `checkout` the branch you wish to merge into and then use the `git merge` command:
 ```
 $ git checkout master
 Switched to branch 'master'
@@ -358,7 +358,7 @@ For example:  We add a **remote** called `origin` from the git repo `git://git.w
 `$ git remote add origin git://git.whatever.com`
 - **List** remotes: `$ git remote -v`
 - **Push** to a remote:  `$ git push (remote) (branch)`
-For example, We push to a **branch** called `hot-fixes` on **remote** called `origin`
+For example, We push to a **branch** called `hot-fixes` on a **remote** called `origin`
 
 `$ git push origin hot-fixes`
 
@@ -368,12 +368,14 @@ Git branching and remotes are confusing!  The main thing to remember is that **w
 
 - Write a descriptive commit message.
 - Break up commits into small changes.
-- Make master clean. Work on your own local branch and merge changes into master when you know they work.
-- Add your SSH key to github so you don't have to type in your user/pass every time.
+- Keep master clean. Work on your own local branch and merge changes into master when you know they work.
+- Add your SSH key to github so you don't have to type in your user/password every time.
 - git checkout [filename] to restore it to the state of the latest commit.
 - git stash if you want to (temporarily) undo changes (git stash apply to re-apply it)
 - use a .gitignore file in each repo (ignore node_modules in javascript, *.class files in java, *pyc for python files, etc)
 - consider git pull with automatic rebase: http://stevenharman.net/git-pull-with-automatic-rebase
 
+##Parting Words:
+Using Git takes practice!  Make sure you have the add-commit-(pull)-push workflow down and you're halfway there!
 
   
