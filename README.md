@@ -369,10 +369,10 @@ Git branching and remotes are confusing!  The main thing to remember is that **w
 - Write a descriptive commit message.
 - Break up commits into small changes.
 - Keep master clean. Work on your own local branch and merge changes into master when you know they work.
-- Add your SSH key to github so you don't have to type in your user/password every time.
+- **Add your SSH key to github so you don't have to type in your user/password every time:** 			   https://help.github.com/articles/generating-ssh-keys/
 - git checkout [filename] to restore it to the state of the latest commit.
 - git stash if you want to (temporarily) undo changes (git stash apply to re-apply it)
-- use a .gitignore file in each repo (ignore node_modules in javascript, *.class files in java, *pyc for python files, etc)
+- **use a .gitignore file in each repo (ignore node_modules in javascript, *.class files in java, *pyc for python files, etc)**
 - consider git pull with automatic rebase: http://stevenharman.net/git-pull-with-automatic-rebase
 
 ##Parting Words:
