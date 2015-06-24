@@ -1,6 +1,7 @@
-# intro-git
+# Git and Github Guide
+Adapted from Hackers at Berkeley's Intro to Git (found at https://github.com/dvcoders/intro-git
 
-##Intro to Git
+##About Git and Github
 ####What is Git?
 Git is a version control system.
 
@@ -15,37 +16,16 @@ It allows you to:
 - who introduced an issue, and when
 - recover from screwed up or lost files
 
-Here is a potentially typical day at work:
-
-1.  People realize there is a catastrophic bug (a SEV) in production (real users are experiencing it! AHHHH)
-
-2.  An high-priority issue is created
-
-3.  Someone triages the problem by finding the commit that introduced the bug
-
-4.  They reset the current production version of the code to just before the buggy commit
-
-5.  Since your name/email is attached to your commits, they find the person who made the bad commit and yell at them/ tell them to fix it
-
-6.  Buggy-Person-of-Shame rewrites/reworks code to do what they originally intended but now without bugs and makes a new commit
-
-7.  Reset-ed commits are re-applied to the production branch such that everything is great and wonderful again
-
-8.  Things are back to normal
-
-9.  Repeat
-
-What if git wasn't used?
+What if git wasn't used and a bug is discovered?
 - Don't know when the bug was introduced and what code caused it
 - Can't reset code to a previous version
 - Don't know who introduced the bug
 - Can't have different versions of code (production versus not-in-production)
 
-Disclosure:  I may have caused a SEV.
+<!-- Note to Kyle and others: include an illustration of branches/commits once prepared. -->
 
 ####What is github?
-
-Github is a web-based Git repository hosting service.
+Although git can be used to track your own personal files, github is what allows large teams to collaborate on a single project. Github is a web-based Git repository hosting service. It hosts and tracks the files in your projects.
 It provides:
 - access control (who can see what)
 - wikis/documentation/READMEs for projects
@@ -55,34 +35,40 @@ It provides:
 
 Which makes Github *excellent* for collaboration.  The open-source community especially loves using Github.  So do hackathon teammates, and technical recruiters.
 
+## Getting Started
 ####Download/Install (Pre-requisite)
-1.  Please follow instructions for your OS here: `http://git-scm.com/book/en/v2/Getting-Started-Installing-Git`
-2.  type `$ git` into your terminal.  It should spit out a usage statement and list of commands.
-3.  Create a `github` account.
+#####Mac:
+Download from http://git-scm.com/download/mac
+####Windows:
+Download from http://git-scm.com/download/win
+Two programs will install: Git BASH and Git GUI. Use Git BASH! Although the GUI can perform almost all the same functions as BASH, it's great to get experience working from the command line. You can use unix/linux commands within BASH.
+####Linux:
+Ubuntu, Debian, and Mint users can run from their terminal: 
+`sudo apt-get install git`
+Fedora Users:
+`sudo yum install git`
 
 ####(Global) Config Settings
   There are some settings (such as your information, what editor you use, aliases, etc) on git that you'll definitely want to configure.
-  Git has a global `~/.gitconfig` and `~/.gitignore` that will affect all of your git repos.  You can also make repo-specific .gitignore files (for example, if you don't want to track .class files in a repo)
+  Git has two files, `~/.gitconfig` and `~/.gitignore` located in your home directory. `~/.gitconfig` stores settings that you can configure. '~/.gitignore` stores information about what files git should not keep track of. (Maybe you don't want git to track any files with the extension ".catvideo").  You can also make repo-specific .gitignore files (for example, if you don't want to track .class files in a repo).
   
   You'll want to set your name, and email (attached to the commits you write):
   
   `$ git config --global user.name "John Doe"`
 
   `$ git config --global user.email johndoe@example.com`
-  
-  If you don't use vim, you'll probably want to set your editor to nano or something.
-  
-  `$ git config --global core.editor nano`
-  
-  *If* you have `subl` as a command, you can set Sublime Text 2 as your default editor.
-  
-  `$ git config --global core.editor "subl -n -w"`
-  
+
+  If you're unfamiliar with vim, change the default editor git uses:
+  -Mac: `git config --global core.editor open`
+  -Windows: `git config --global core.editor notepad`
+  -Linux: `git config --global core.editor nano`
+
   If you want to make your git output be pretty and colorful, here's one way to do it:
-  Open your git config: `vim ~/.gitconfig`
-  
-  Add the following lines:
-  
+  Open your git config: 
+  -Mac: `open ~/.gitconfig`
+  -Windows: `start ~/.gitconfig`
+  -Linux: `nano ~/.gitconfig`
+  -Add the following lines:
   ```
   [color]
     ui = true
@@ -100,18 +86,28 @@ Which makes Github *excellent* for collaboration.  The open-source community esp
   As you use git more and more, you might be interested in aliasing commands (generally by making them shorter so you can type less!)  For more examples of ways to customize your git, you can look at an example gitconfig file under `git_resources`.
 
 ##Git Basics
+####Basic Unix Commands
+You'll be working within the terminal, or git BASH if you're on Windows, and so it's handy to know some basic unix commands for navigation. Type a command, and then press enter.
+-`pwd` tells you the directory (folder) you are currently in
+-`ls` shows the files in the current directory
+-`cd [FOLDER_NAME]` allows changes the current directory to FOLDER_NAME
+-`cd ..` changes back to the parent directory (the folder that the *current* directory is inside of)
+
+On Windows you can also right-click on the folder you want to be in and click `git Bash`. This will open git BASH with the current directory already at the folder you want. On Macs, you can type `cd ` and then drag the folder you want to the terminal window and it will fill in the pathname.
+
+If this is confusing, ask for help! The command line can be daunting for beginners, but it will get easier with practice.
 ####Getting a Git Repository
-  - **Initializing a repository in an existing directory**
-    - You have a directory that you want to track with git --> use `git init`
+  - **Cloning an Existing Repository**
+    - Most of the time in this club and elsewhere you'll be using git to work on projects already on github. Use the following command to clone the project to your computer
     
-    ```
-    $ mkdir temp
-    $ cd temp
-    $ git init
-    Initialized empty Git repository in /Users/melaniecebula/temp/.git/
-    $ ls -la
-    .  ..  .git
-    ```
+    `git clone https://github.com/dvcoders/intro-git.git`
+    
+    -This creates a new folder with a name matching the repository (Git name for project) name that you cloned from
+    -`cd [REPOSITORY_NAME]` to change your current directory to the newly created folder
+    
+  - **Initializing a repository in an existing directory**
+    - If you have a directory already on your computer that you want to start tracking with git, use `git init` to start tracking that folder with git.
+    
     
     The `.git` directory allows git commands to be recognized within its parent directory (where you typed `git init`.)  
     If you are NOT Inside a git repo, you will get an error when you try to type a git command.
@@ -120,11 +116,8 @@ Which makes Github *excellent* for collaboration.  The open-source community esp
     $ git status
     fatal: Not a git repository (or any of the parent directories): .git
     ```
-    
-  - **Cloning an Existing Repository**
-    - The git repository already exists on github (either you created or its public like this workshop repo!)
-    
-    `git clone git@github.com:HackBerkeley/intro-git.git`
+
+<!--> Note to Kyle: Edited up to this point -->
 
 ####Making and Recording Changes to the Repo
 Let's go back to temp.
