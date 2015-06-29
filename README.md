@@ -1,8 +1,6 @@
 ## Git and Github Guide
 Adapted from Hackers at Berkeley's Intro to Git (found at [https://github.com/hackberkeley/intro-git](https://github.com/hackberkeley/intro-git)
 
----
-
 ###About Git and Github
 #### What is Git?
 Git is a version control system.
@@ -40,17 +38,12 @@ Which makes Github *excellent* for collaboration.  The open-source community esp
 ---
 
 ### Getting Started
-#### Downloads/Installs (Pre-requisite)
-#### Mac:
-Download from [http://git-scm.com/download/mac](http://git-scm.com/download/mac)
-#### Windows:
-Download from [http://git-scm.com/download/win](http://git-scm.com/download/win)
-Two programs will install: Git BASH and Git GUI. Use Git BASH! Although the GUI can perform almost all the same functions as BASH, it's great to get experience working from the command line. You can use unix/linux commands within BASH.
-#### Linux:
-Ubuntu, Debian, and Mint users can run from their terminal: 
-`sudo apt-get install git`
-Fedora Users:
-`sudo yum install git`
+
+| Operating System | Download/Install                                                                                                                                                                                                                                                                                                            |
+|------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| OS X             | Download from [http://git-scm.com/download/mac](http://git-scm.com/download/mac)                                                                                                                                                                                                                                            |
+| Windows          | Download from [http://git-scm.com/download/win](http://git-scm.com/download/win) - Two programs will install: Git BASH and Git GUI. Use Git BASH! Although the GUI can perform almost all the same functions as BASH, it's great to get experience working from the command line. You can use unix/linux commands within BASH. |
+| Linux            | Ubuntu, Debian, and Mint users can run from their terminal: `sudo apt-get install git`. Fedora Users: `sudo yum install git`                                                                                                                                                                            |
 
 #### (Global) Config Settings
   There are some settings (such as your information, what editor you use, aliases, etc) on git that you'll definitely want to configure.
@@ -63,33 +56,38 @@ Fedora Users:
   `$ git config --global user.email johndoe@example.com`
 
   If you're unfamiliar with vim, change the default editor git uses:
-  -Mac: `git config --global core.editor open`
-  -Windows: `git config --global core.editor notepad`
-  -Linux: `git config --global core.editor nano`
+  
+  - Mac: `git config --global core.editor open`
+  - Windows: `git config --global core.editor notepad`
+  - Linux: `git config --global core.editor nano`
 
   If you want to make your git output be pretty and colorful, here's one way to do it:
   Open your git config: 
-  -Mac: `open ~/.gitconfig`
-  -Windows: `start ~/.gitconfig`
-  -Linux: `nano ~/.gitconfig`
-  -Add the following lines:
+  
+  - Mac: `open ~/.gitconfig`
+  - Windows: `start ~/.gitconfig`
+  - Linux: `nano ~/.gitconfig`
+  - Add the following lines:
+  
   ```
-  [color]
-    ui = true
-  [color "branch"]
-    current = yellow reverse
-    local = yellow
-    remote = green
-  [color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red
-    new = green
+[color]
+	ui = true
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red
+	new = green
   ```
   
-  As you use git more and more, you might be interested in aliasing commands (generally by making them shorter so you can type less!)  For more examples of ways to customize your git, you can look at an example gitconfig file under `git_resources`.
+As you use git more and more, you might be interested in aliasing commands (generally by making them shorter so you can type less!)  For more examples of ways to customize your git, you can look at an example gitconfig file under `git_resources`.
 
-## Git Basics
+---
+
+### Git Basics
 #### Basic Unix Commands
 You'll be working within the terminal, or git BASH if you're on Windows, and so it's handy to know some basic unix commands for navigation. Type a command, and then press enter.
 -`pwd` tells you the directory (folder) you are currently in
@@ -125,6 +123,7 @@ If this is confusing, ask for help! The command line can be daunting for beginne
 
 #### Making and Recording Changes to the Repo
 Let's go back to temp.
+
 `$ cd temp`
 
 You tell git what to keep **track** of (does it care if you make changes to it or not?), and then git will tell you if any of your **tracked** files have been **modified**, whether they are **staged** for commit, and what **branch** you are on.
@@ -238,92 +237,10 @@ Note: You can recover from undoing things (see [http://stackoverflow.com/questio
 
 So far, you've only dealt with a local git repo.  But nowadays, most people use Github to have a **remote** repository (the hosted on Github itself) in addition to their local repository.  This especially makes sense if you're working in teams.  Each teammate has their own **local** git repo, but they all push to the same project repo on Github.
 
-Now:
-  - Break into small groups of 2-4 people with 1 **Leader**.
-  - **Leader**: Create a new directory, and initialize a git repo in it.  Let's do this with github:
-  	1.  Create new repository with a README
-  	2.  Go to the repo's Settings --> Collaborators and add your teammates
-  - **Everyone**: clone the repo:
-  `$ git clone https://github.com/[your-leader's-username]/[your-repository-name.git]`
-  - **Leader**: `$ touch introductions.py`, add + commit the file.  Then type `$ git push`
-  - **Everyone**: `$ git pull`
-  
-  Cool!  So you use `$ git push` to **update the Github repo** with your changes, and `$git pull` to **update your local repo** with the changes from the Github repo.
-  Now add `introduce()` to `introductions.py`:
-  ```
-    def introduce():
-      print "Hi! I'm <Your Name Here>."
-   ```
-   follow the add-commit-push flow, if you weren't the first person to push you'll see this:
-   ``` 	
-   $ git push
-	To https://github.com/[your-leader's-username]/[your-repository-name.git]
- 	! [rejected]        master -> master (non-fast-forward)
-	...
-   ```
-   
-   This means that your teammates successfully **pushed** and now you are **behind the remote** repo.  
-   Pull in the changes: `$ git pull`
-   
-   You'll probably see this:
-   ```
-   $ git pull
-   Auto-merging introductions.py
-   CONFLICT (content): Merge conflict in introductions.py
-   Automatic merge failed; fix conflicts and then commit the result.
-   ```
-   
-   That means your changes are **conflicting** each other.  Open `introductions.py` and you'll see something like this:
-   
-   ```
-   <<<<<<< HEAD
-   def introduce():
-     print "Hi! I'm Fred."
-   =======
-   def introduce():
-     print "Hi! I'm George."
-   >>>>>>> [really long string of letters and numbers]
-   ```
-   
-   You'll have to manually fix this by removing the **conflict markers**.  
-   
-   Example:
-   ```
-   def introduceFred():
-     print "Hi! I'm Fred."
+// Need to rewrite this section
 
-   def introduceGeorge():
-     print "Hi! I'm George."
-   ```
-   
-   Sometimes conflicts are more complicated than removing the conflict markers as you'll only want to keep one version, or you'll need parts of both versions.
-   
-   Now do ye olde add-commit-push sequence again and all should be well.
-   
-   **Leader**:  Once everybody has collected their `introduceName()` functions and pushed up to the repositories, add these lines at the bottom.
-```
-def main():
-    introducePersonA()
-    introducePersonB()
-    introducePersonC()
 
-if __name__ == "__main__":
-    main()
-```
-
-Basically, write a `function main()` that calls the introduce functions for everybody in your group, then add that last if statement at the bottom that calls main().
-
-If you run
-```
-$ python introductions.py
-"Hi my name is Ron!"
-"Hi my name is Ginny!"
-"Hi my name is Fred!"
-"Hi my name is George!"
-```
-your program will introduce everybody. Hurray! Now add-commit-push it up to github so your entire group can git pull and enjoy your finished project.
-
-## Other Topics:
+### Other Topics:
 #### Git Branching Summarized
 - A branch in Git is simply a lightweight movable pointer to your latest commit
 - The default branch name in Git is master
@@ -373,7 +290,7 @@ Git branching and remotes are confusing!  The main thing to remember is that **w
 - **use a .gitignore file in each repo (ignore node_modules in javascript, *.class files in java, *pyc for python files, etc)**
 - consider git pull with automatic rebase: [http://stevenharman.net/git-pull-with-automatic-rebase](http://stevenharman.net/git-pull-with-automatic-rebase)
 
-## Parting Words:
+### Parting Words:
 Using Git takes practice!  Make sure you have the add-commit-(pull)-push workflow down and you're halfway there!
 
   
