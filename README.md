@@ -35,9 +35,7 @@ It provides:
 
 Which makes Github *excellent* for collaboration.  The open-source community especially loves using Github.  So do hackathon teammates, and technical recruiters.
 
----
-
-### Getting Started
+## Getting Started
 
 | Operating System | Download/Install                                                                                                                                                                                                                                                                                                            |
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -85,7 +83,6 @@ Which makes Github *excellent* for collaboration.  The open-source community esp
   
 As you use git more and more, you might be interested in aliasing commands (generally by making them shorter so you can type less!)  For more examples of ways to customize your git, you can look at an example gitconfig file under `git_resources`.
 
----
 
 ### Git Basics
 #### Basic Unix Commands
@@ -240,7 +237,8 @@ So far, you've only dealt with a local git repo.  But nowadays, most people use 
 // Need to rewrite this section
 
 
-### Other Topics:
+## Other Topics:
+
 #### Git Branching Summarized
 - A branch in Git is simply a lightweight movable pointer to your latest commit
 - The default branch name in Git is master
