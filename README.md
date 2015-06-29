@@ -1,11 +1,13 @@
-# Git and Github Guide
-Adapted from Hackers at Berkeley's Intro to Git (found at https://github.com/dvcoders/intro-git
+## Git and Github Guide
+Adapted from Hackers at Berkeley's Intro to Git (found at [https://github.com/hackberkeley/intro-git](https://github.com/hackberkeley/intro-git)
 
-##About Git and Github
-####What is Git?
+---
+
+###About Git and Github
+#### What is Git?
 Git is a version control system.
 
-####What is a version control system (VCS)?
+#### What is a version control system (VCS)?
 
 What is “version control”, and why should you care? Version control is a system that records changes to a file or set of files over time so that you can recall specific versions later.
 It allows you to:
@@ -24,7 +26,7 @@ What if git wasn't used and a bug is discovered?
 
 <!-- Note to Kyle and others: include an illustration of branches/commits once prepared. -->
 
-####What is github?
+#### What is github?
 Although git can be used to track your own personal files, github is what allows large teams to collaborate on a single project. Github is a web-based Git repository hosting service. It hosts and tracks the files in your projects.
 It provides:
 - access control (who can see what)
@@ -35,20 +37,22 @@ It provides:
 
 Which makes Github *excellent* for collaboration.  The open-source community especially loves using Github.  So do hackathon teammates, and technical recruiters.
 
-## Getting Started
-####Download/Install (Pre-requisite)
-#####Mac:
-Download from http://git-scm.com/download/mac
-####Windows:
-Download from http://git-scm.com/download/win
+---
+
+### Getting Started
+#### Downloads/Installs (Pre-requisite)
+#### Mac:
+Download from [http://git-scm.com/download/mac](http://git-scm.com/download/mac)
+#### Windows:
+Download from [http://git-scm.com/download/win](http://git-scm.com/download/win)
 Two programs will install: Git BASH and Git GUI. Use Git BASH! Although the GUI can perform almost all the same functions as BASH, it's great to get experience working from the command line. You can use unix/linux commands within BASH.
-####Linux:
+#### Linux:
 Ubuntu, Debian, and Mint users can run from their terminal: 
 `sudo apt-get install git`
 Fedora Users:
 `sudo yum install git`
 
-####(Global) Config Settings
+#### (Global) Config Settings
   There are some settings (such as your information, what editor you use, aliases, etc) on git that you'll definitely want to configure.
   Git has two files, `~/.gitconfig` and `~/.gitignore` located in your home directory. `~/.gitconfig` stores settings that you can configure. '~/.gitignore` stores information about what files git should not keep track of. (Maybe you don't want git to track any files with the extension ".catvideo").  You can also make repo-specific .gitignore files (for example, if you don't want to track .class files in a repo).
   
@@ -85,8 +89,8 @@ Fedora Users:
   
   As you use git more and more, you might be interested in aliasing commands (generally by making them shorter so you can type less!)  For more examples of ways to customize your git, you can look at an example gitconfig file under `git_resources`.
 
-##Git Basics
-####Basic Unix Commands
+## Git Basics
+#### Basic Unix Commands
 You'll be working within the terminal, or git BASH if you're on Windows, and so it's handy to know some basic unix commands for navigation. Type a command, and then press enter.
 -`pwd` tells you the directory (folder) you are currently in
 -`ls` shows the files in the current directory
@@ -96,7 +100,7 @@ You'll be working within the terminal, or git BASH if you're on Windows, and so 
 On Windows you can also right-click on the folder you want to be in and click `git Bash`. This will open git BASH with the current directory already at the folder you want. On Macs, you can type `cd ` and then drag the folder you want to the terminal window and it will fill in the pathname.
 
 If this is confusing, ask for help! The command line can be daunting for beginners, but it will get easier with practice.
-####Getting a Git Repository
+#### Getting a Git Repository
   - **Cloning an Existing Repository**
     - Most of the time in this club and elsewhere you'll be using git to work on projects already on github. Use the following command to clone the project to your computer
     
@@ -119,7 +123,7 @@ If this is confusing, ask for help! The command line can be daunting for beginne
 
 <!--> Note to Kyle: Edited up to this point -->
 
-####Making and Recording Changes to the Repo
+#### Making and Recording Changes to the Repo
 Let's go back to temp.
 `$ cd temp`
 
@@ -225,12 +229,12 @@ $ g commit -m "Created hello.txt which contains a greeting"
  Undo commit with `git reset` (use with caution):
  `$ git reset --soft HEAD~1 `
  
- Note: You can recover from undoing things (see http://stackoverflow.com/questions/2510276/undoing-git-reset)
+Note: You can recover from undoing things (see [http://stackoverflow.com/questions/2510276/undoing-git-reset](http://stackoverflow.com/questions/2510276/undoing-git-reset))
  but you should be careful in general, because it can get complicated.
  
  Okay cool, so git can be used to keep track of modifications you make to the files that it tracks.
     
-####Pushing/Pulling Changes
+#### Pushing/Pulling Changes
 
 So far, you've only dealt with a local git repo.  But nowadays, most people use Github to have a **remote** repository (the hosted on Github itself) in addition to their local repository.  This especially makes sense if you're working in teams.  Each teammate has their own **local** git repo, but they all push to the same project repo on Github.
 
@@ -320,7 +324,7 @@ $ python introductions.py
 your program will introduce everybody. Hurray! Now add-commit-push it up to github so your entire group can git pull and enjoy your finished project.
 
 ## Other Topics:
-####Git Branching Summarized
+#### Git Branching Summarized
 - A branch in Git is simply a lightweight movable pointer to your latest commit
 - The default branch name in Git is master
 - Each branch points to the latest commit made on that branch (each time you commit, it moves forward automatically)
@@ -342,7 +346,7 @@ $ git merge hot-fix
 ```
 This code switches to **branch** master, and then merges the changes from **branch** hot-fix into master.  Now master is up-to-date!
 
-####Remote Branches:
+#### Remote Branches:
 **Remote branches** are references (pointers) to the state of branches in your **remote** repositories.
 - They take the form `(remote)/(branch)`
 - **Add** a remote: `$ git remote add REMOTE-NAME REMOTE-LOCATION`
@@ -357,18 +361,19 @@ For example, We push to a **branch** called `hot-fixes` on a **remote** called `
 
 Git branching and remotes are confusing!  The main thing to remember is that **when you switch branches, your code changes**! Use `$ git log` liberally if you forget which changes are on which branches.
 
-##Best Practices:
+## Best Practices:
 
 - Write a descriptive commit message.
 - Break up commits into small changes.
 - Keep master clean. Work on your own local branch and merge changes into master when you know they work.
-- **Add your SSH key to github so you don't have to type in your user/password every time:** 			   https://help.github.com/articles/generating-ssh-keys/
+- **Add your SSH key to github so you don't have to type in your user/password every time:** 			   
+[https://help.github.com/articles/generating-ssh-keys/](https://help.github.com/articles/generating-ssh-keys/)
 - git checkout [filename] to restore it to the state of the latest commit.
 - git stash if you want to (temporarily) undo changes (git stash apply to re-apply it)
 - **use a .gitignore file in each repo (ignore node_modules in javascript, *.class files in java, *pyc for python files, etc)**
-- consider git pull with automatic rebase: http://stevenharman.net/git-pull-with-automatic-rebase
+- consider git pull with automatic rebase: [http://stevenharman.net/git-pull-with-automatic-rebase](http://stevenharman.net/git-pull-with-automatic-rebase)
 
-##Parting Words:
+## Parting Words:
 Using Git takes practice!  Make sure you have the add-commit-(pull)-push workflow down and you're halfway there!
 
   
