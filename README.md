@@ -116,14 +116,12 @@ If this is confusing, ask for help! The command line can be daunting for beginne
     fatal: Not a git repository (or any of the parent directories): .git
     ```
 
-<!--> Note to Kyle: Edited up to this point -->
-
 #### Making and Recording Changes to the Repo
-Let's go back to temp.
+You tell git what to keep **track** of (does it care if you make changes to it or not?), and then git will tell you if any of your **tracked** files have been **modified**, whether they are **staged** for commit, and what **branch** you are on. The following command gives you all of that information:
 
-`$ cd temp`
+`git status`
 
-You tell git what to keep **track** of (does it care if you make changes to it or not?), and then git will tell you if any of your **tracked** files have been **modified**, whether they are **staged** for commit, and what **branch** you are on.
+If you type this command in your newly cloned, or newly initialized folder, you'll see the following because you haven't made any changes yet:
 
 ```
 $ git status
@@ -134,8 +132,16 @@ Initial commit
 nothing to commit
 ```
 
-We haven't done anything yet!  We're on the **master branch** by default, we haven't added/staged any files or committed any changes.
-Create a file called `hello.txt` with the text `hello` in it.
+The first line means you are on the **master branch** (which is by default). The second line means you haven't commited any changes yet, and the third line means you haven't made any changes to the files or added any files yet.
+
+So you want to start working on the files in your newly git-tracked folder. To do so, follow these steps:
+1. Make changes to the file(s) in your directory.
+2. "add" those files so git tracks the changes.
+3. Commit the changes you've made.
+Detailed explanation of each step is below.
+
+#####1. Make Changes
+If you create a new text file named "hello.txt", and then run `git status`, you'll see the following:
 
 ```
 $ git status
@@ -149,7 +155,18 @@ Untracked files:
 nothing added to commit but untracked files present
 ```
 
-So currently hello.txt is **untracked** by git.  Let's use the `git add` command to track it!
+hello.txt is **untracked** by git. The last line means that git does not see any *tracked* changes, but it reminds you that there is an *untracked* file (hello.txt). 
+
+#####2. Add files
+You want to "add" hello.txt, so that it is **tracked* by git. Use:
+
+`git add hello.txt`
+
+If you want to add multiple files, just enter each filename separated by a space like so 
+
+`git add file1 file2 file3 etc.`
+
+You should see the following:
 
 ```
 $ git add hello.txt
@@ -161,35 +178,39 @@ Changes to be committed:
 	new file:   hello.txt
 ```
 
-Cool, now its **tracked** but you haven't **committed** any changes.
+Now git knows there aren't any untracked files, and instead considers hello.txt as a **tracked** file, waiting to be committed. You can go back and make more changes to hello.txt or any other file. Just make sure to re-add hello.txt and the other files you have modified.
+
+#####3. Commit Changes
+Once you have made all the changes you want and added those files, you are ready to "commit" your changes. Use the following command:
+
+`git commit -m "message explaining the changes"`
+
+If all goes well, something like this should show up:
 
 ```
-$ g commit -m "Created hello.txt which contains a greeting"
+$ git commit -m "Created hello.txt which contains a greeting"
 [master (root-commit) f6f7407] Created hello.txt which contains a greeting
  1 file changed, 1 insertion(+)
  create mode 100644 hello.txt
  ```
- 
- Now git is tracking a file called hello.txt, and you have one commit with your initial changes to it.
+
+Congrats, you've made you're first commit. You probably want to publish those changes to Github, which is covered below.
+
+#####Recap
  
  If you type `git status` again, you'll notice we're kind of back to where we started.  That's because we made and now git is tracking the changes between your most recent commit and now.  This is the typical flow of using git:
  
- 1.  Create file/make changes to file
+ 1.  Create file/make changes to file(s)
  
  2.  `git add <file>`
  
- 3.  `git commit -m "changes to <file>`
- 
- 
- 
- Make any change to `hello.txt`.  Now that `hello.txt` is already being tracked, instead of `new file`, it'll say that it has been `modified`.    
- 
- ```
- $ git add hello.txt
- $ git commit -m "Changed text of hello.txt"
- [master 025aabe] Changed text of hello.txt
- 1 file changed, 1 insertion(+), 1 deletion(-)
- ```
+ 3.  `git commit -m "changes to <file(s)>`
+
+ 4.  Publish those changes (covered below)
+
+
+
+<!-- Note to Kyle: Changes made to this point. notes/thoughts: Branching should probably be explained in the introduction. Should the next section be saved for later? Pushing/pulling should come first? -->
  
 #### Looking at Changes, Commits, and Undoing Things
 
