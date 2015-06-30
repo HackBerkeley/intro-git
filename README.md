@@ -135,9 +135,13 @@ nothing to commit
 The first line means you are on the **master branch** (which is by default). The second line means you haven't commited any changes yet, and the third line means you haven't made any changes to the files or added any files yet.
 
 So you want to start working on the files in your newly git-tracked folder. To do so, follow these steps:
+
 1. Make changes to the file(s) in your directory.
+
 2. "add" those files so git tracks the changes.
+
 3. Commit the changes you've made.
+
 Detailed explanation of each step is below.
 
 #####1. Make Changes
