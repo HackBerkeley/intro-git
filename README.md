@@ -69,7 +69,7 @@ Which makes Github *excellent* for collaboration.  The open-source community esp
   - Linux: `nano ~/.gitconfig`
   - Add the following lines:
   
-  ```
+```
 [color]
 	ui = true
 [color "branch"]
@@ -81,7 +81,7 @@ Which makes Github *excellent* for collaboration.  The open-source community esp
 	frag = magenta bold
 	old = red
 	new = green
-  ```
+```
   
 As you use git more and more, you might be interested in aliasing commands (generally by making them shorter so you can type less!)  For more examples of ways to customize your git, you can look at an example gitconfig file under `git_resources`.
 
@@ -171,7 +171,7 @@ $ g commit -m "Created hello.txt which contains a greeting"
 [master (root-commit) f6f7407] Created hello.txt which contains a greeting
  1 file changed, 1 insertion(+)
  create mode 100644 hello.txt
- ```
+```
  
  Now git is tracking a file called hello.txt, and you have one commit with your initial changes to it.
  
@@ -187,25 +187,25 @@ $ g commit -m "Created hello.txt which contains a greeting"
  
  Make any change to `hello.txt`.  Now that `hello.txt` is already being tracked, instead of `new file`, it'll say that it has been `modified`.    
  
- ```
+```
  $ git add hello.txt
  $ git commit -m "Changed text of hello.txt"
  [master 025aabe] Changed text of hello.txt
  1 file changed, 1 insertion(+), 1 deletion(-)
- ```
+```
  
 #### Looking at Changes, Commits, and Undoing Things
 
  If you want to see the commits you've made so far:
- ```
+```
  $ git log
  Fri Jan 23 17:38:42 2015 -0800 025aabe (HEAD, master) Changed text of hello.txt  [Melanie Cebula]
  Fri Jan 23 17:35:13 2015 -0800 f6f7407 Created hello.txt which contains a greeting  [Melanie Cebula]
- ```
+```
  
  If you haven't yet committed your changes, you can look at *what* you changed by performing `$ git diff`.  Go ahead and make some more changes to hello.txt.  In my case, my evil twin sister stole my laptop and furiously typed some things.  I want to know what she changed!!!
  
- ```
+```
  $ git diff
  diff --git i/hello.txt w/hello.txt
  index 092bfb9..da5d515 100644
@@ -216,7 +216,7 @@ $ g commit -m "Created hello.txt which contains a greeting"
  +Hahahahahaha I'm Melanie's evil twin Emily and I changed the text of this file!
  +Deal with it!!!!
  +-Emily
- ```
+```
  She deleted yo (in red) and added a message (in green).  How do we undo this?
  Since this is unstaged, we basically need to **un-modify the modified changes**.
  
