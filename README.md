@@ -257,10 +257,95 @@ Okay cool, so git can be used to keep track of modifications you make to the fil
     
 #### Pushing/Pulling Changes
 
-So far, you've only dealt with a local git repo.  But nowadays, most people use Github to have a **remote** repository (the hosted on Github itself) in addition to their local repository.  This especially makes sense if you're working in teams.  Each teammate has their own **local** git repo, but they all push to the same project repo on Github.
+![](https://illustrated-git.readthedocs.org/en/latest/_images/git-flows.svg)
 
-`NEED TO REWRITE THIS SECTION`
+So far, you've only dealt with a local git repo.  
 
+But nowadays, most people use Github to have a **remote** repository (the hosted on [Github](https://github.com) itself) in addition to their local repository.  
+
+This especially makes sense if you're working in teams.  Each teammate has their own **local** git repo, but they all push to the same project repo on Github.
+
+Lets go over the the technical terms so we all know what wer're talking about.
+
+**Pushing** is the action of sending code to a remote repository ([github](https://github.com) in our case). Think of pushing as you shipping your packages ("commits") to their destination ("remote repository") in the mail ("internet").
+
+If you push commits to a remote respository, the commits still stay on your computer, but the remote repository gets update with the chages you've made. Here's an example push to a remote repository:
+
+```
+$ git push origin feature/mongoose-orm
+
+Counting objects: 13, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (11/11), done.
+Writing objects: 100% (13/13), 1.36 KiB | 0 bytes/s, done.
+Total 13 (delta 7), reused 0 (delta 0)
+To git@github.com:dvcoders/dvcoders-backend.git
+   905dd73..39b510b  feature/mongoose-orm -> feature/mongoose-orm
+```
+
+However, if the code on your computer is **behind** the code on the remote, you'll be rejected, and told that you need to "catch up" with `git pull`
+
+```
+$ git push origin master
+To https://github.com/[username]/[name-of-project.git]
+! [rejected]		master -> master (non-fast-forward)
+```
+
+**Pulling** is the opposite of pushing, instead of sending commits to the remote repository, we're **getting** code from the remote repository. We want to do this when other people working on the project have update our remote repository but we're not caught up yet. Think of pulling as getting a delivery of several packages ("commits") to your house ("local repository")
+
+```
+$ git pull
+
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 1), reused 3 (delta 1), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From github.com:dvcoders/intro-git
+   eaf2834..2e5a31a  master     -> origin/master
+Updating eaf2834..2e5a31a
+Fast-forward
+ README.md | 34 +++++++++++++++++-----------------
+ 1 file changed, 17 insertions(+), 17 deletions(-)
+```
+
+However, sometimes something called a **merge conflix** can happen when trying to pull from a repository. A merge conflict happens when the code on your computer and the code on the remote repository have both been changd and git doesn't know which one you want to use (overwrite your local work or ignore the changes from the remote?)
+
+As a result, we sometimes get this kind of error:
+
+```
+$ git pull
+Auto-merging introductions.py
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+Git is telling us that there are multiple changes to the README.md file in this example. So in order to fix this issue, open the file listed in the "merge conflixt in ___________" and you should see **conflict markers**.
+
+```
+<<<<<<< HEAD
+### Learning Git
+git is awesome
+=======
+### Learning Git
+git sucks
+>>>>>>> [commit hash shows up here - 77976da35a...: README.md]
+```
+
+Git is telling us that these lines of code are different between our local computer and the remote we just tried to pull. In order to resolve this we ned to make a choice between which code we want to keep.
+
+Everything from `<<<<<<< HEAD` to `=======` is the code we have on our local machine.
+
+Everything from `=======` to `>>>>>>> [commit hash...]` is the code from our remote repo.
+
+Simply delete the half you don't want and clean up all `=======` or `<<<<<<<` markings. 
+
+Finally, to resolve this merge conflict we simple add and commit our changes!
+
+```
+$ git add -A
+$ git commit -m "Resolved merge conflict"
+# Optionally push the commit when appropriate
+```
 
 ## Other Topics:
 
