@@ -200,8 +200,6 @@ $ git commit -m "Created hello.txt which contains a greeting"
 ```
  
  Now git is tracking a file called hello.txt, and you have one commit with your initial changes to it.
-=======
- ```
 
 Congrats, you've made you're first commit. You probably want to publish those changes to Github, which is covered below.
 
