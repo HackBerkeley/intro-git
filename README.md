@@ -196,15 +196,15 @@ $ git commit -m "Created hello.txt which contains a greeting"
 [master (root-commit) f6f7407] Created hello.txt which contains a greeting
  1 file changed, 1 insertion(+)
  create mode 100644 hello.txt
-<<<<<<< HEAD
 ```
  
- Now git is tracking a file called hello.txt, and you have one commit with your initial changes to it.
+Now git is tracking a file called hello.txt, and you have one commit with your initial changes to it.
 
 Congrats, you've made you're first commit. You probably want to publish those changes to Github, which is covered below.
 
-#####Recap
- If you type `git status` again, you'll notice we're kind of back to where we started.  That's because we made and now git is tracking the changes between your most recent commit and now.  This is the typical flow of using git:
+##### Recap
+
+If you type `git status` again, you'll notice we're kind of back to where we started.  That's because we made and now git is tracking the changes between your most recent commit and now.  This is the typical flow of using git:
  
  1.  Create file/make changes to file(s)
  
@@ -218,14 +218,15 @@ Congrats, you've made you're first commit. You probably want to publish those ch
  
 #### Looking at Changes, Commits, and Undoing Things
 
- If you want to see the commits you've made so far:
+If you want to see the commits you've made so far:
+
 ```
  $ git log
  Fri Jan 23 17:38:42 2015 -0800 025aabe (HEAD, master) Changed text of hello.txt  [Melanie Cebula]
  Fri Jan 23 17:35:13 2015 -0800 f6f7407 Created hello.txt which contains a greeting  [Melanie Cebula]
 ```
  
- If you haven't yet committed your changes, you can look at *what* you changed by performing `$ git diff`.  Go ahead and make some more changes to hello.txt.  In my case, my evil twin sister stole my laptop and furiously typed some things.  I want to know what she changed!!!
+If you haven't yet committed your changes, you can look at *what* you changed by performing `$ git diff`.  Go ahead and make some more changes to hello.txt.  In my case, my evil twin sister stole my laptop and furiously typed some things.  I want to know what she changed!!!
  
 ```
  $ git diff
@@ -239,27 +240,26 @@ Congrats, you've made you're first commit. You probably want to publish those ch
  +Deal with it!!!!
  +-Emily
 ```
- She deleted yo (in red) and added a message (in green).  How do we undo this?
- Since this is unstaged, we basically need to **un-modify the modified changes**.
+She deleted you (in red) and added a message (in green).  How do we undo this?
+Since this is unstaged, we basically need to **un-modify the modified changes**.
  
- Here's on way to do that (use with caution):
- `$ git checkout -- hello.txt`
+Here's on way to do that (use with caution):
+`$ git checkout -- hello.txt`
  
- However, if you want to **undo something you've already committed (say your last commit)**:
+However, if you want to **undo something you've already committed (say your last commit)**:
  
- Undo commit with `git reset` (use with caution):
- `$ git reset --soft HEAD~1 `
+Undo commit with `git reset` (use with caution):
+`$ git reset --soft HEAD~1 `
  
-Note: You can recover from undoing things (see [http://stackoverflow.com/questions/2510276/undoing-git-reset](http://stackoverflow.com/questions/2510276/undoing-git-reset))
- but you should be careful in general, because it can get complicated.
+Note: You can recover from undoing things (see [http://stackoverflow.com/questions/2510276/undoing-git-reset](http://stackoverflow.com/questions/2510276/undoing-git-reset)) but you should be careful in general, because it can get complicated.
  
- Okay cool, so git can be used to keep track of modifications you make to the files that it tracks.
+Okay cool, so git can be used to keep track of modifications you make to the files that it tracks.
     
 #### Pushing/Pulling Changes
 
 So far, you've only dealt with a local git repo.  But nowadays, most people use Github to have a **remote** repository (the hosted on Github itself) in addition to their local repository.  This especially makes sense if you're working in teams.  Each teammate has their own **local** git repo, but they all push to the same project repo on Github.
 
-// Need to rewrite this section
+`NEED TO REWRITE THIS SECTION`
 
 
 ## Other Topics:
