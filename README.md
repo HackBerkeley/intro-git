@@ -388,7 +388,9 @@ Git branching and remotes are confusing!  The main thing to remember is that **w
 
 ## Best Practices:
 
-- Write a descriptive commit message (50 characters or les)
+- **USE GITHUB FLOW**: [Github Flow - Branch, Commit, PR, Discuss, Merge](https://guides.github.com/introduction/flow/)
+
+- Write a descriptive commit message (50 characters or less)
 - Break up commits into small changes.
 - Keep master clean. Work on your own local branch and merge changes into master when you know they work.
 - **Add your SSH key to github so you don't have to type in your user/password every time:** 			   
