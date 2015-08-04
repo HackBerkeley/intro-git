@@ -388,7 +388,7 @@ Git branching and remotes are confusing!  The main thing to remember is that **w
 
 ## Best Practices:
 
-- Write a descriptive commit message.
+- Write a descriptive commit message (50 characters or les)
 - Break up commits into small changes.
 - Keep master clean. Work on your own local branch and merge changes into master when you know they work.
 - **Add your SSH key to github so you don't have to type in your user/password every time:** 			   
@@ -396,7 +396,6 @@ Git branching and remotes are confusing!  The main thing to remember is that **w
 - git checkout [filename] to restore it to the state of the latest commit.
 - git stash if you want to (temporarily) undo changes (git stash apply to re-apply it)
 - **use a .gitignore file in each repo (ignore node_modules in javascript, *.class files in java, *pyc for python files, etc)**
-- consider git pull with automatic rebase: [http://stevenharman.net/git-pull-with-automatic-rebase](http://stevenharman.net/git-pull-with-automatic-rebase)
 
 ### Parting Words:
 Using Git takes practice!  Make sure you have the add-commit-(pull)-push workflow down and you're halfway there!
