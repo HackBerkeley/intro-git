@@ -162,7 +162,7 @@ nothing added to commit but untracked files present
 hello.txt is **untracked** by git. The last line means that git does not see any *tracked* changes, but it reminds you that there is an *untracked* file (hello.txt). 
 
 #####2. Add files
-You want to "add" hello.txt, so that it is **tracked* by git. Use:
+You want to "add" hello.txt, so that it is **tracked** by git. Use:
 
 `git add hello.txt`
 
