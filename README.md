@@ -170,6 +170,10 @@ If you want to add multiple files, just enter each filename separated by a space
 
 `git add file1 file2 file3 etc.`
 
+If you want to add *all* the files in the working directory, use the following:
+
+`git add -A`
+
 You should see the following:
 
 ```
