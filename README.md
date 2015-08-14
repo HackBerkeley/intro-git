@@ -136,15 +136,32 @@ The first line means you are on the **master branch** (which is by default). The
 
 So you want to start working on the files in your newly git-tracked folder. To do so, follow these steps:
 
-1. Make changes to the file(s) in your directory.
+1. Create a new "branch" and "check out" that branch for your work.
 
-2. "add" those files so git tracks the changes.
+2. Make changes to the file(s) in your directory.
 
-3. Commit the changes you've made.
+3. "add" those files so git tracks the changes.
+
+4. Commit the changes you've made.
 
 Detailed explanation of each step is below.
 
-#####1. Make Changes
+#####1. Create a new branch
+Git and github keep track of your work with branches. The topic is covered further in the "Other Topics" section below. For now, just know that before making changes on any of the files, you should create a new branch so you are *not* working directly under the branch "master" or "develop."
+
+Create a new branch with:
+
+`git branch [branch name]`
+
+Usually you will name your branch something like "feature/something" or "bug-fix/something" to clearly identify what you are working on.
+
+Checkout or "switch" to that newly created branch with:
+
+`git checkout [branch name]`
+
+To check that you are on the branch you want to be, run `git status` and the first line will tell you what branch you have checked out.
+
+#####2. Make Changes
 If you create a new text file named "hello.txt", and then run `git status`, you'll see the following:
 
 ```
@@ -161,7 +178,7 @@ nothing added to commit but untracked files present
 
 hello.txt is **untracked** by git. The last line means that git does not see any *tracked* changes, but it reminds you that there is an *untracked* file (hello.txt). 
 
-#####2. Add files
+#####3. Add files
 You want to "add" hello.txt, so that it is **tracked** by git. Use:
 
 `git add hello.txt`
@@ -188,7 +205,7 @@ Changes to be committed:
 
 Now git knows there aren't any untracked files, and instead considers hello.txt as a **tracked** file, waiting to be committed. You can go back and make more changes to hello.txt or any other file. Just make sure to re-add hello.txt and the other files you have modified.
 
-#####3. Commit Changes
+#####4. Commit Changes
 Once you have made all the changes you want and added those files, you are ready to "commit" your changes. Use the following command:
 
 `git commit -m "message explaining the changes"`
@@ -209,16 +226,17 @@ Congrats, you've made you're first commit. You probably want to publish those ch
 ##### Recap
 
 If you type `git status` again, you'll notice we're kind of back to where we started.  That's because we made and now git is tracking the changes between your most recent commit and now.  This is the typical flow of using git:
- 
- 1.  Create file/make changes to file(s)
- 
- 2.  `git add <file>`
- 
- 3.  `git commit -m "changes to <file(s)>`
 
- 4.  Publish those changes (covered below)
+ 1.  `git branch [branch name]` and `git checkout [branch name]"`
+ 
+ 2.  Create file/make changes to file(s)
+ 
+ 3.  `git add <file>`
+ 
+ 4.  `git commit -m "changes to <file(s)>"`
 
-<!-- Note to Kyle: Changes made to this point. notes/thoughts: Branching should probably be explained in the introduction. Should the next section be saved for later? Pushing/pulling should come first? -->
+ 5.  Publish those changes (covered below)
+
  
 #### Looking at Changes, Commits, and Undoing Things
 
@@ -354,6 +372,9 @@ $ git commit -m "Resolved merge conflict"
 ## Other Topics:
 
 #### Git Branching Summarized
+![](http://4.bp.blogspot.com/-t4yLz-et74A/UBIES98QPmI/AAAAAAAADGY/S5lwne9xpcM/s1600/releaseFlow.png)
+(Image courtesy of http://nxvl.blogspot.com/2012/07/a-continous-delivery-git-branching-model.html)
+
 - A branch in Git is simply a lightweight movable pointer to your latest commit
 - The default branch name in Git is master
 - Each branch points to the latest commit made on that branch (each time you commit, it moves forward automatically)
@@ -373,7 +394,11 @@ $ git checkout master
 Switched to branch 'master'
 $ git merge hot-fix
 ```
-This code switches to **branch** master, and then merges the changes from **branch** hot-fix into master.  Now master is up-to-date!
+This code switches to **branch** master, and then merges the changes from **branch** hot-fix into master.  Now master is up-to-date! You may need to correct a merge-conflict at this point, which is covered in the Pushing/Pulling section above.
+
+**List** your local branches with `git branch`. An asterisk indicates the branch you are currently on. `git branch -a` will list all the local branches, and all the *remote* branches also. Remote branches are discussed below.
+
+**Note:** When making changes on your projects, don't work under the branch "master" or "develop." It's better to work on another branch, which can be merged with the "develop" branch later on.
 
 #### Remote Branches:
 **Remote branches** are references (pointers) to the state of branches in your **remote** repositories.
@@ -382,11 +407,16 @@ This code switches to **branch** master, and then merges the changes from **bran
 For example:  We add a **remote** called `origin` from the git repo `git://git.whatever.com`
 
 `$ git remote add origin git://git.whatever.com`
+
+**Note:** When you `git clone` a repository from github, git will automatically add the remote branches. 
+
 - **List** remotes: `$ git remote -v`
 - **Push** to a remote:  `$ git push (remote) (branch)`
-For example, We push to a **branch** called `hot-fixes` on a **remote** called `origin`
+For example, if you are working on a branch called "feature/css-styling" and you want to push to github:
 
-`$ git push origin hot-fixes`
+`$ git push origin feature/css-styling`
+
+This tells git to push to the origin (the github repository) on a branch called "feature/css-styling."
 
 Git branching and remotes are confusing!  The main thing to remember is that **when you switch branches, your code changes**! Use `$ git log` liberally if you forget which changes are on which branches.
 
