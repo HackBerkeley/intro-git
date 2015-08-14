@@ -22,7 +22,6 @@ What if git wasn't used and a bug is discovered?
 - Don't know who introduced the bug
 - Can't have different versions of code (production versus not-in-production)
 
-<!-- Note to Kyle and others: include an illustration of branches/commits once prepared. -->
 
 #### What is github?
 Although git can be used to track your own personal files, github is what allows large teams to collaborate on a single project. Github is a web-based Git repository hosting service. It hosts and tracks the files in your projects.
@@ -412,11 +411,14 @@ For example:  We add a **remote** called `origin` from the git repo `git://git.w
 
 - **List** remotes: `$ git remote -v`
 - **Push** to a remote:  `$ git push (remote) (branch)`
+
+A remote is simply a repository (folder being tracked by git) which lives somewhere other than you computer - *github for example*!
+
 For example, if you are working on a branch called "feature/css-styling" and you want to push to github:
 
 `$ git push origin feature/css-styling`
 
-This tells git to push to the origin (the github repository) on a branch called "feature/css-styling."
+This tells git to push the commit(s) from the feature/css-styling branch to the "remote" url called "origin".
 
 Git branching and remotes are confusing!  The main thing to remember is that **when you switch branches, your code changes**! Use `$ git log` liberally if you forget which changes are on which branches.
 
