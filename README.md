@@ -34,7 +34,7 @@ It provides:
 
 Which makes Github *excellent* for collaboration.  The open-source community especially loves using Github.  So do hackathon teammates, and technical recruiters.
 
-## Getting Started
+### Gitting Started (get it?)
 
 | Operating System | Download/Install                                                                                                                                                                                                                                                                                                            |
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -368,7 +368,7 @@ $ git commit -m "Resolved merge conflict"
 # Optionally push the commit when appropriate
 ```
 
-## Other Topics:
+### Other Topics:
 
 #### Git Branching Summarized
 ![](http://4.bp.blogspot.com/-t4yLz-et74A/UBIES98QPmI/AAAAAAAADGY/S5lwne9xpcM/s1600/releaseFlow.png)
@@ -422,7 +422,7 @@ This tells git to push the commit(s) from the feature/css-styling branch to the 
 
 Git branching and remotes are confusing!  The main thing to remember is that **when you switch branches, your code changes**! Use `$ git log` liberally if you forget which changes are on which branches.
 
-## Best Practices:
+### Best Practices:
 
 - **USE GITHUB FLOW**: [Github Flow - Branch, Commit, PR, Discuss, Merge](https://guides.github.com/introduction/flow/)
 
