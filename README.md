@@ -435,13 +435,12 @@ Git branching and remotes are confusing!  The main thing to remember is that **w
 - git stash if you want to (temporarily) undo changes (git stash apply to re-apply it)
 - **use a .gitignore file in each repo (ignore node_modules in javascript, *.class files in java, *pyc for python files, etc)**
 
-### Learning Resouces
+### Learning Resources
 - [Got 15 Minutes? Learn Git](https://try.github.io/levels/1/challenges/1) - Awesome interactive command line which guides you through the commands we covered above.
 - [Git Cheatsheat](./git-resources/github-cheat-sheet.pdf) - basically summarizes this entire guide in two pages for quick reference.
 - Again, [use Github Flow](https://guides.github.com/introduction/flow/), it's "kind of" important.
 - [git-cheat CLI (Command Line Interface)](https://github.com/0xAX/git-cheat) - nifty command line tool where you can type `git-cheat remote` and it will give great summaries of what each command does.
+- Have any other good learning resources? *Make a pull request on this repo*!
 
 ### Parting Words:
 Using Git takes practice!  Make sure you have the add-commit-(pull)-push workflow down and you're halfway there!
-
-  
