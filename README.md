@@ -437,7 +437,7 @@ Git branching and remotes are confusing!  The main thing to remember is that **w
 
 ### Learning Resources
 - [Got 15 Minutes? Learn Git](https://try.github.io/levels/1/challenges/1) - Awesome interactive command line which guides you through the commands we covered above.
-- [Git Cheatsheat](./git-resources/github-cheat-sheet.pdf) - basically summarizes this entire guide in two pages for quick reference.
+- [Git Cheatsheat](./git-resources/github-git-cheat-sheet.pdf) - basically summarizes this entire guide in two pages for quick reference.
 - Again, [use Github Flow](https://guides.github.com/introduction/flow/), it's "kind of" important.
 - [git-cheat CLI (Command Line Interface)](https://github.com/0xAX/git-cheat) - nifty command line tool where you can type `git-cheat remote` and it will give great summaries of what each command does.
 - Have any other good learning resources? *Make a pull request on this repo*!
