@@ -114,7 +114,8 @@ For this example, lets make another commit.
 Open `destory.js` and add the following line to the end:
 
 ```js
-console.log("Luke, I am your father");
+console.log('Luke, I am your father!'');
+console.log('I\'m not actually, my name is YOUR_NAME...')
 ```
 
 Then go through the adding the changes (above), and the commit them like we just did. 
@@ -135,7 +136,104 @@ Thankfully, Github has been nice and explained how we can link our folder and th
 
 First we'll add the URL of this repository to our local folder, and name it `origin` with this command:
 
-`git remote add origin https://github.com/YOUR_USERNAME/deathsar.git`
+`$ git remote add origin https://github.com/YOUR_USERNAME/deathsar.git`
+
+### Pushing
+Pushing is simply update your *remote repository* with the commits you've made on a branch.
+
+We're on the master branch with two commits (the ones we just made). And we want to send this to our repository on Github. Lets `push` the commits to the corresponding branch:
+
+```
+$ git push -u origin master
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 804 bytes | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To git@github.com:YOUR_USERNAME/deathstar.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+```
+
+This means push to the `origin` (https://github.com/YOUR_USERNAME/deathstar.git) branch called `master` (the same one we're on). If we were on another branch, we would push to the branch with the same name.
+
+Git is also telling us that the remote now has a new branch called `master`! The same one we were working on
+
+**Note**: The `-u` is only used the first time to connect branches between local and remote repositories. Next time you push do so like this `$ git push origin branch-name`.
+
+Refresh the page on your Github repo!
+
+### Working Together (Cloning, Pushing, Pulling)
+In order to practice pulling, you need to work with another person. So turn to the person next to you, say hi, ask their name, and their Github username.
+
+One person will be called "Developer A" and the other "Developer B".
+
+Dev A should **add Dev B as a collaborator** on their Github repository (https://github.com/DEVELOPER-A/deathstar.git).
+
+You can do that by going to Settings > Collaborators > Then add Dev B's username.
+
+##### - Cloning Someone Else's Repository
+Dev B should now `clone` Dev A's repository on Github.
+
+```
+$ cd /where/you/want/to/clone/it
+
+$ git clone https://github.com/DEVELOPER-A/deathstar.git
+Cloning into 'deathstar'...
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+Checking connectivity... done.
+```
+Congrats Dev B, you just clone Dev A's work! Now `cd` into the repo and open up `destory.js`... You should see Dev A's print statement at the end:
+
+```js
+console.log('I\'m not actually, my name is <DEV-A-NAME>...')
+```
+
+##### - Pushing to Dev A's Repo
+Okay Dev B, your time to shine!
+
+Edit the `destory.js` to print whatever you'd like (try to be nice :P)
+
+- Add the changes
+- Commit the changes
+- Push the commits to the master branch on Dev A's repo
+
+If you need help, there are mentors around the room ready to help you
+
+##### - Pulling Dev B's Additions
+Your turn Dev A. So your friend and made a commit to your repo, awesome! 
+
+But how do you get those changes onto your local repository? With **pulling**. Pulling is simply the opposite of pushing (duh!) - it means there are things on the remote you don't have which you want, so you **pull them down to your computer**.
+
+Here's a picture to visualize
+
+![](https://illustrated-git.readthedocs.org/en/latest/_images/git-flows.svg)
+
+Time to `pull`:
+
+```
+$ git pull 
+# NOTE TO SELF, HAVE SOMEONE ELSE COMMIT TO DEATHSTAR THEN DO EXAMPLE PULL
+``` 
+
+Now, Dev A, open your `destory.js` file and you should see the additions that Dev B made!
+
+### Todo
+
+> Branching
+> 
+> Checking Out
+> 
+> Pull Requests
+> 
+> etc.
+
+
+
+
 
 
 
