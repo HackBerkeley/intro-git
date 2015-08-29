@@ -230,10 +230,3 @@ Now, Dev A, open your `destory.js` file and you should see the additions that De
 > Pull Requests
 > 
 > etc.
-
-
-
-
-
-
-
