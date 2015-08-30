@@ -9,7 +9,7 @@ Following the main [README.md](../README.md) you should go through the installat
 ### Configuring Git to Know "You"
 Git needs to know two things about you to associate you with your commits. **Name** and **email address** - don't worry, you will never be emailed. Also, *this is not making an account*, just setting variables in a configuration file.
 
-Do so like the:
+Do so like this:
 
 `$ git config --global user.name "Lord Vader"`
 
@@ -24,16 +24,16 @@ So to make a repo, we first need a directory, lets make one:
 
 `$ mkdir deathstar`, then `$ cd deathstar`, now we should be inside our deathstar directory, check by using print working directory `pwd`.
 
-Cool, but this is just a directory (or folder) without git! Lets **initialize git** in our directory:
+Cool, but this is just a directory (or folder) without Git! Lets **initialize Git** in our directory:
 
 ```
 $ git init
 Initialized empty Git repository in /path/to/deathstar/.git/
 ```
 
-Sweet! This entire directory is now being tracked by git.
+Sweet! This entire directory is now being tracked by Git.
 
-**Important**: Your secret to using git will be `git status`, use it often!
+**Important**: Your secret to using Git will be `git status`, use it often!
 
 ### Adding Files
 
@@ -67,7 +67,7 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-Our `destroy.js` needs to be tracked by git so it will know when we make changes to it. Let's add it:
+Our `destroy.js` needs to be tracked by Git so it will know when we make changes to it. Let's add it:
 
 `$ git add -A` This command adds *all* new, modified, deleted, or untracked files. Use this often!
 
@@ -85,7 +85,7 @@ Changes to be committed:
 	new file:   destroy.js
 ```
 
-Great, now we added the changes to `destroy.js` to git's tracking. Next time you modify, create, or delete a file, git will tell you to add those changes.
+Great, now we added the changes to `destroy.js` to Git's tracking. Next time you modify, create, or delete a file, Git will tell you to add those changes.
 
 ### Committing
 Great, we've made changes and added them, time to package them into commit with a description.
