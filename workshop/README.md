@@ -110,7 +110,7 @@ For this example, lets make another commit.
 Open `destroy.js` and add the following line to the end:
 
 ```js
-console.log('Luke, I am your father!'');
+console.log('Luke, I am your father!');
 console.log('I\'m not actually, my name is YOUR_NAME...')
 ```
 
@@ -124,7 +124,7 @@ Up until now, the work we've been doing has been on our local computer, nothing 
 
 We're going to assume you have a [Github](https://github.com/) account. Sign in now or make one.
 
-Now, on Github **make a nee repo with the same name as our foler** - "deathstar"
+Now, on Github **make a new repo with the same name as our directory** - "deathstar"
 
 [You should see something like this](./empty-repository.png)
 
