@@ -9,7 +9,7 @@ Following the main [README.md](../README.md) you should go through the installat
 ### Configuring Git to Know "You"
 Git needs to know two things about you to associate you with your commits. **Name** and **email address** - don't worry, you will never be emailed. Also, *this is not making an account*, just setting variables in a configuration file.
 
-Do so like this:
+Do so like the:
 
 `$ git config --global user.name "Lord Vader"`
 
@@ -29,7 +29,6 @@ Cool, but this is just a directory (or folder) without git! Lets **initialize gi
 ```
 $ git init
 Initialized empty Git repository in /path/to/deathstar/.git/
-$
 ```
 
 Sweet! This entire directory is now being tracked by git.
@@ -38,15 +37,15 @@ Sweet! This entire directory is now being tracked by git.
 
 ### Adding Files
 
-So, lets say we want to blow up Alderaan, well let's make a little `destory.js` file to do that:
+So, lets say we want to blow up Alderaan, well let's make a little `destroy.js` file to do that:
 
 ```
 $ touch destroy.js
 $ ls
-destory.js
+destroy.js
 $
 ```
-Now open your text editor of choice and add the following lines to `destory.js`
+Now open your text editor of choice and add the following lines to `destroy.js`
 
 If you're a Star Wars fan, [here's some fun Star Wars theme JavaScript](https://gist.github.com/thebearjew/19f670f9becb15bd12a7#file-destroy-js) to put into your `destroy.js` file for fun.
 
@@ -63,13 +62,12 @@ Initial commit
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
 
-	destory.js
+	destroy.js
 
 nothing added to commit but untracked files present (use "git add" to track)
-$
 ```
 
-Our `destory.js` needs to be tracked by git so it will know when we make changes to it. Let's add it:
+Our `destroy.js` needs to be tracked by git so it will know when we make changes to it. Let's add it:
 
 `$ git add -A` This command adds *all* new, modified, deleted, or untracked files. Use this often!
 
@@ -84,11 +82,10 @@ Initial commit
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
 
-	new file:   destory.js
-$
+	new file:   destroy.js
 ```
 
-Great, now we added the changes to `destory.js` to git's tracking. Next time you modify, create, or delete a file, git will tell you to add those changes.
+Great, now we added the changes to `destroy.js` to git's tracking. Next time you modify, create, or delete a file, git will tell you to add those changes.
 
 ### Committing
 Great, we've made changes and added them, time to package them into commit with a description.
@@ -99,8 +96,7 @@ Note: first commits are always called "Initial commit:
 $ git commit -m "Initial commit"
 [master (root-commit) 21e1721] Initial Commit
  1 file changed, 56 insertions(+)
- create mode 100644 destory.js
-$
+ create mode 100644 destroy.js
 ```
 
 We've just made a commit with everything we've done until this point and given it a description "Initial commit", which means we're starting off.
@@ -111,7 +107,7 @@ Next time you made changes to a file(s), go through the adding process and then 
 
 For this example, lets make another commit.
 
-Open `destory.js` and add the following line to the end:
+Open `destroy.js` and add the following line to the end:
 
 ```js
 console.log('Luke, I am your father!'');
@@ -186,7 +182,7 @@ remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
 Receiving objects: 100% (3/3), done.
 Checking connectivity... done.
 ```
-Congrats Dev B, you just clone Dev A's work! Now `cd` into the repo and open up `destory.js`... You should see Dev A's print statement at the end:
+Congrats Dev B, you just clone Dev A's work! Now `cd` into the repo and open up `destroy.js`... You should see Dev A's print statement at the end:
 
 ```js
 console.log('I\'m not actually, my name is <DEV-A-NAME>...')
@@ -195,7 +191,7 @@ console.log('I\'m not actually, my name is <DEV-A-NAME>...')
 ##### - Pushing to Dev A's Repo
 Okay Dev B, your time to shine!
 
-Edit the `destory.js` to print whatever you'd like (try to be nice :P)
+Edit the `destroy.js` to print whatever you'd like (try to be nice :P)
 
 - Add the changes
 - Commit the changes
@@ -212,19 +208,81 @@ Here's a picture to visualize
 
 ![](https://illustrated-git.readthedocs.org/en/latest/_images/git-flows.svg)
 
-Time to `pull`:
+Time to pull:
 
 ```
 $ git pull 
-# NOTE TO SELF, HAVE SOMEONE ELSE COMMIT TO DEATHSTAR THEN DO EXAMPLE PULL
+remote: Counting objects: 4, done.
+remote: Compressing objects: 100% (1/1), done.
+remote: Total 4 (delta 2), reused 4 (delta 2), pack-reused 0
+Unpacking objects: 100% (4/4), done.
+From github.com:thebearjew/deathstar
+   c6ff65f..9b39773  master     -> origin/master
+Updating c6ff65f..9b39773
+Fast-forward
+ destroy.js | 2 ++
+ 1 file changed, 2 insertions(+)
 ``` 
 
-Now, Dev A, open your `destory.js` file and you should see the additions that Dev B made!
+Now, Dev A, open your `destroy.js` file and you should see the additions that Dev B made!
+
+Pulling worked!
+
+### Branching 
+Branching is actually the most important feature of Git. It allows 2 or 2,000 developers work on the same code without writing over or deleting each other's work.
+
+So we just learned the ins-and-outs of pulling and pushing our changes (or commits) to a repository.
+
+However, **what happens if Dev A decides to rename `destroy.js` to `peace-and-love.js`**?
+
+Dev B will still have their file named `destory.js`. After they edit `destory.js`, add the changes, commit them, and push them, they might get this error.
+
+```
+$ git push origin master
+To git@github.com:DEVELOPER-A/deathstar.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'git@github.com:DEVELOPER-A/deathstar.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+
+Dev B is unable to push because Dev A made changes and pushed them before Dev B did. 
+
+Now Dev B should try to `$ git pull` and see what happens -> a **merge error**.
+
+**A merge conflict is the same as two people trying to write on the same line of paper at the same time**. We can avoid this by giving each person a copy of the paper and let them work on their own, this is **branching**.
+
+Both Dev A and Dev B should make their own branches:
+
+```
+#Dev A
+$ git checkout -b feature/<DEVELOPER_A_NAME>           <-"jake" for example
+Switched to a new branch 'feature/<DEVELOPER_A_NAME>'
+```
+
+```
+#Dev B
+$ git checkout -b feature/<DEVELOPER_B_NAME>
+Switched to a new branch 'feature/<DEVELOPER_B_NAME>'
+```
+
+The command `$ git checkout -b branch-name` creates a branch and simultaneously switch to it.
+
+We can see that we made the branch successfully by asking Git to list the branches
+
+```
+$ git branch -a 
+*feature/<DEV_A/B_NAME>
+master
+remote/origin/master
+```
+
 
 ### Todo
-
-> Branching
-> 
+ 
 > Checking Out
 > 
 > Pull Requests
