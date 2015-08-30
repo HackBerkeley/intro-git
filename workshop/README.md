@@ -228,7 +228,7 @@ Now, Dev A, open your `destroy.js` file and you should see the additions that De
 
 Pulling worked!
 
-### Branching 
+### Branching and Checking Out
 Branching is actually the most important feature of Git. It allows 2 or 2,000 developers work on the same code without writing over or deleting each other's work.
 
 So we just learned the ins-and-outs of pulling and pushing our changes (or commits) to a repository.
@@ -255,6 +255,8 @@ Now Dev B should try to `$ git pull` and see what happens -> a **merge error**.
 
 **A merge conflict is the same as two people trying to write on the same line of paper at the same time**. We can avoid this by giving each person a copy of the paper and let them work on their own, this is **branching**.
 
+
+##### - Practice Branching
 Both Dev A and Dev B should make their own branches:
 
 ```
@@ -271,20 +273,35 @@ Switched to a new branch 'feature/<DEVELOPER_B_NAME>'
 
 The command `$ git checkout -b branch-name` creates a branch and simultaneously switch to it.
 
+`checkout` allows you to jump between branches. Do so later by using `$ git checkout branch-name`
+
 We can see that we made the branch successfully by asking Git to list the branches
 
 ```
 $ git branch -a 
-*feature/<DEV_A/B_NAME>
+*feature/<YOUR_NAME>
 master
 remote/origin/master
 ```
 
+Dev A Add the following to `destroy.js`
 
-### Todo
- 
-> Checking Out
-> 
-> Pull Requests
-> 
-> etc.
+```js
+console.log('You really shouldn\'t blow up planets Vader');
+```
+
+Dev B add the following to `destroy.js`
+
+```js
+console.log('Blowing up planets is FUN! Give me another one!');
+```
+
+Both Devs add, commit, and push like so `$ git push origin feature/<YOUR_NAME>`
+
+Now check the Github repo and you should see `3 branches` at the top.
+
+--
+### Merging, Pull Request, and Forking Demo
+Speakers give demo on merging branches, Github Flow, and Forking.
+
+
