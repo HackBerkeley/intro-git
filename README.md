@@ -1,5 +1,4 @@
 ## Git and Github Guide
-Adapted from Hackers at Berkeley's Intro to Git (found at [https://github.com/hackberkeley/intro-git](https://github.com/hackberkeley/intro-git))
 
 ###About Git and Github
 #### What is Git?
