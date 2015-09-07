@@ -304,4 +304,6 @@ Now check the Github repo and you should see `3 branches` at the top.
 ### Merging, Pull Request, and Forking Demo
 Speakers give demo on merging branches, Github Flow, and Forking.
 
+These are features unique to Github, so demoing them on Github makes a lot of sense!
+
 
