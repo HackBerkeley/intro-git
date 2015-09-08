@@ -2,14 +2,14 @@
 
 Lets practice git!
 
-Following the main [README.md](../README.md) you should go through the installation process for your machine as well as the required `git config` commands.
+Following the main [README](../README.md) you should go through the installation process for your machine as well as the required `git config` commands.
 
 **Note**: You'll see `$` these a lot. Don't actually type them in! They just mean you're entering a command!
 
 ### Configuring Git to Know "You"
 Git needs to know two things about you to associate you with your commits. **Name** and **email address** - don't worry, you will never be emailed. Also, *this is not making an account*, just setting variables in a configuration file.
 
-Do so like the:
+Do so like this:
 
 `$ git config --global user.name "Lord Vader"`
 
@@ -24,16 +24,16 @@ So to make a repo, we first need a directory, lets make one:
 
 `$ mkdir deathstar`, then `$ cd deathstar`, now we should be inside our deathstar directory, check by using print working directory `pwd`.
 
-Cool, but this is just a directory (or folder) without git! Lets **initialize git** in our directory:
+Cool, but this is just a directory (or folder) without Git! Lets **initialize Git** in our directory:
 
 ```
 $ git init
 Initialized empty Git repository in /path/to/deathstar/.git/
 ```
 
-Sweet! This entire directory is now being tracked by git.
+Sweet! This entire directory is now being tracked by Git.
 
-**Important**: Your secret to using git will be `git status`, use it often!
+**Important**: Your secret to using Git will be `git status`, use it often!
 
 ### Adding Files
 
@@ -43,7 +43,6 @@ So, lets say we want to blow up Alderaan, well let's make a little `destroy.js` 
 $ touch destroy.js
 $ ls
 destroy.js
-$
 ```
 Now open your text editor of choice and add the following lines to `destroy.js`
 
@@ -67,7 +66,7 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-Our `destroy.js` needs to be tracked by git so it will know when we make changes to it. Let's add it:
+Our `destroy.js` needs to be tracked by Git so it will know when we make changes to it. Let's add it:
 
 `$ git add -A` This command adds *all* new, modified, deleted, or untracked files. Use this often!
 
@@ -85,7 +84,7 @@ Changes to be committed:
 	new file:   destroy.js
 ```
 
-Great, now we added the changes to `destroy.js` to git's tracking. Next time you modify, create, or delete a file, git will tell you to add those changes.
+Great, now we added the changes to `destroy.js` to Git's tracking. Next time you modify, create, or delete a file, Git will tell you to add those changes.
 
 ### Committing
 Great, we've made changes and added them, time to package them into commit with a description.
@@ -134,13 +133,23 @@ First we'll add the URL of this repository to our local folder, and name it `ori
 
 `$ git remote add origin https://github.com/YOUR_USERNAME/deathsar.git`
 
+Now we check to see if it was successfully by asking git to show us our remote URLS:
+
+```
+$ git remote -v 
+origin https://github.com/YOUR_USERNAME/deathstar.git (fetch)
+origin https://github.com/YOUR_USERNAME/deathstar.git (push)
+```
+
+Hooray!
+
 ### Pushing
-Pushing is simply update your *remote repository* with the commits you've made on a branch.
+Pushing is simply updating your *remote repository* with the commits you've made on a branch.
 
 We're on the master branch with two commits (the ones we just made). And we want to send this to our repository on Github. Lets `push` the commits to the corresponding branch:
 
 ```
-$ git push -u origin master
+$ git push -u origin master # <--- First time only! After do $ git push origin master
 Counting objects: 3, done.
 Delta compression using up to 4 threads.
 Compressing objects: 100% (2/2), done.
@@ -153,11 +162,11 @@ Branch master set up to track remote branch master from origin.
 
 This means push to the `origin` (https://github.com/YOUR_USERNAME/deathstar.git) branch called `master` (the same one we're on). If we were on another branch, we would push to the branch with the same name.
 
-Git is also telling us that the remote now has a new branch called `master`! The same one we were working on
+Git is also telling us that the remote now has a new branch called `master`! The same one we were working on.
 
-**Note**: The `-u` is only used the first time to connect branches between local and remote repositories. Next time you push do so like this `$ git push origin branch-name`.
+**Note!**: The `-u` is only used the first time to connect branches between local and remote repositories. Next time you push do so like this **`$ git push origin branch-name`**.
 
-Refresh the page on your Github repo!
+Refresh the page on your Github repo and see your commit!
 
 ### Working Together (Cloning, Pushing, Pulling)
 In order to practice pulling, you need to work with another person. So turn to the person next to you, say hi, ask their name, and their Github username.
@@ -204,7 +213,7 @@ Your turn Dev A. So your friend and made a commit to your repo, awesome!
 
 But how do you get those changes onto your local repository? With **pulling**. Pulling is simply the opposite of pushing (duh!) - it means there are things on the remote you don't have which you want, so you **pull them down to your computer**.
 
-Here's a picture to visualize
+Here's visualization:
 
 ![](https://illustrated-git.readthedocs.org/en/latest/_images/git-flows.svg)
 
@@ -260,13 +269,13 @@ Now Dev B should try to `$ git pull` and see what happens -> a **merge error**.
 Both Dev A and Dev B should make their own branches:
 
 ```
-#Dev A
+# Dev A
 $ git checkout -b feature/<DEVELOPER_A_NAME>           <-"jake" for example
 Switched to a new branch 'feature/<DEVELOPER_A_NAME>'
 ```
 
 ```
-#Dev B
+# Dev B
 $ git checkout -b feature/<DEVELOPER_B_NAME>
 Switched to a new branch 'feature/<DEVELOPER_B_NAME>'
 ```
@@ -303,5 +312,7 @@ Now check the Github repo and you should see `3 branches` at the top.
 --
 ### Merging, Pull Request, and Forking Demo
 Speakers give demo on merging branches, Github Flow, and Forking.
+
+These are features unique to Github, so demoing them on Github makes a lot of sense!
 
 
