@@ -432,14 +432,17 @@ Git branching and remotes are confusing!  The main thing to remember is that **w
 [https://help.github.com/articles/generating-ssh-keys/](https://help.github.com/articles/generating-ssh-keys/)
 - git checkout [filename] to restore it to the state of the latest commit.
 - git stash if you want to (temporarily) undo changes (git stash apply to re-apply it)
-- **use a .gitignore file in each repo (ignore node_modules in javascript, *.class files in java, *pyc for python files, etc)**
+- use a .gitignore file in each repo (ignore node_modules in javascript, *.class files in java, *pyc for python files, .DS_Store on OS X, .config files for server applications)
 
 ### Learning Resources
 - [Got 15 Minutes? Learn Git](https://try.github.io/levels/1/challenges/1) - Awesome interactive command line which guides you through the commands we covered above.
 - [Git Cheatsheat](./git-resources/github-git-cheat-sheet.pdf) - basically summarizes this entire guide in two pages for quick reference.
 - Again, [use Github Flow](https://guides.github.com/introduction/flow/), it's "kind of" important.
 - [git-cheat CLI (Command Line Interface)](https://github.com/0xAX/git-cheat) - nifty command line tool where you can type `git-cheat remote` and it will give great summaries of what each command does.
+- [19 Tips for Everyday Git Use](http://www.alexkras.com/19-git-tips-for-everyday-use/) is a good article detailing some new ways to use common Git commands, and some useful ways to use unknown Git commands.
 - Have any other good learning resources? *Make a pull request on this repo*!
 
 ### Parting Words:
-Using Git takes practice!  Make sure you have the add-commit-(pull)-push workflow down and you're halfway there!
+Using Git takes practice!  Make sure you have the **add** - **commit** - **(push/pull)** workflow down and then you're halfway there!
+
+<small>Forked an merged with ❤️ by [dvcoders](https://github.com/dvcoders)</small>
