@@ -139,6 +139,27 @@ Then go through the adding the changes (above), and the commit them like we just
 
 This time write a **different commit message**. It should describe what changes you've made.
 
+### History
+
+So we've made a few commits. Now let's browse them to see what we changed.
+
+Fortunately for us, there's git log. Think of Git's log as a journal that remembers all the changes we've committed so far, in the order we committed them. Try running it now:
+
+```
+$ git log
+commit 3ef1ee7e39dc69a5e14119a0cca6d951b5e86c95
+Author: Darth Vader <vader@deathstar.empire>
+Date:   In a galaxy far, far away
+
+    Get the passengers
+
+commit 6323231533dcee3e9f80cc20f99dc991d4e2e34f
+Author: Darth Vader <vader@deathstar.empire>
+Date:   A long time ago
+
+    Add initial order
+```
+
 ### Linking to a Remote (Github)
 
 Up until now, the work we've been doing has been on our local computer, nothing has left our little folder... time to change that.
