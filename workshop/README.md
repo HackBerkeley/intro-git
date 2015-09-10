@@ -1,6 +1,6 @@
 ## Git Workshop
 
-Lets practice git!
+Let's learn git!
 
 Following the main [README.md](../README.md) you should go through the installation process for your machine as well as the required `git config` commands.
 
@@ -11,47 +11,68 @@ Git needs to know two things about you to associate you with your commits. **Nam
 
 Do so like the:
 
-`$ git config --global user.name "Lord Vader"`
+`$ git config --global user.name "Darth Vader"`
 
-`git config --global user.email lordvader@deathstar.mil`
+`$ git config --global user.email "vader@deathstar.empire"`
 
 The `--global` flag tells git that you want your **name** and **email address** to be the same across all of the repositories you work in, not just the current one.
 
 ### Creating a Repo
-Quick review, a **repo** is simply a *directory (folder) being tracked* by git.
+A **repo** is simply a directory (folder) being tracked by git. **Tracking** means that git keeps track of the changes made to files inside the folder.
 
-So to make a repo, we first need a directory, lets make one:
+So to make a repo, we first need a directory. Let's make one:
 
-`$ mkdir deathstar`, then `$ cd deathstar`, now we should be inside our deathstar directory, check by using print working directory `pwd`.
+```
+$ mkdir deathstar
+$ cd deathstar/
+```
 
-Cool, but this is just a directory (or folder) without git! Lets **initialize git** in our directory:
+Now we should be inside our `deathstar` directory. Let's check by using the print working directory command, `pwd`.
+
+```
+$ pwd
+/home/vader/deathstar
+```
+
+Cool, but this is just a directory (or folder) without git! Let's **initialize git** in our directory:
 
 ```
 $ git init
-Initialized empty Git repository in /path/to/deathstar/.git/
+Initialized empty Git repository in /home/vader/deathstar/.git/
 ```
 
-Sweet! This entire directory is now being tracked by git.
+Sweet! The entire `deathstar` directory is now being tracked by git. Git uses the hidden folder **./git/** to keep track of changes &ndash; don't delete it!
 
-**Important**: Your secret to using git will be `git status`, use it often!
+We can verify that git is tracking `deathstar` by using the `git status` command: 
+
+```
+$ git status
+On branch master
+
+Initial commit
+
+nothing to commit (create/copy files and use "git add" to track)
+```
 
 ### Adding Files
 
-So, lets say we want to blow up Alderaan, well let's make a little `destroy.js` file to do that:
+As Lord Vader, we want to tell our troops what to do. Make a text file to keep all your orders in:
 
 ```
-$ touch destroy.js
+$ touch orders.txt
 $ ls
-destroy.js
-$
+orders.txt
 ```
-Now open your text editor of choice and add the following lines to `destroy.js`
 
-If you're a Star Wars fan, [here's some fun Star Wars theme JavaScript](https://gist.github.com/thebearjew/19f670f9becb15bd12a7#file-destroy-js) to put into your `destroy.js` file for fun.
+Now open your text editor of choice and add the following line to `orders.txt`
 
-<small>Sticker for the first person to find the DBZ reference!</small>
+```
+$ vim orders.txt
+$ cat orders.txt
+Tear this ship apart until you find those plans
+```
 
-Now that we have `destroy.js` with content we should our best friend **`git status`** to see what the state of the files are.
+Now that we have `orders.txt` with content we should use our best friend **`git status`** to see what git thinks of the state of our repo right now.
 
 ```
 $ git status
@@ -62,16 +83,18 @@ Initial commit
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
 
-	destroy.js
+	orders.txt
 
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-Our `destroy.js` needs to be tracked by git so it will know when we make changes to it. Let's add it:
+Notice how git says **orders.txt** is untracked? That means git recognizes that this is a new text file.  To tell  git to start tracking changes to **orders.txt**, we need to add it to the staging area:
 
-`$ git add -A` This command adds *all* new, modified, deleted, or untracked files. Use this often!
+```
+$ git add orders.txt
+```
 
-Now lets see what our status is after adding 
+Right. Now git is keeping track of changes to that file. Now lets see what our status is after adding it:
 
 ```
 $ git status
@@ -82,36 +105,34 @@ Initial commit
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
 
-	new file:   destroy.js
+	new file:   orders.txt
 ```
 
-Great, now we added the changes to `destroy.js` to git's tracking. Next time you modify, create, or delete a file, git will tell you to add those changes.
+As you can see, we've added the new file **orders.txt** to git's tracking. Whenever you modify, create, or delete a file, git will tell you to add those changes.
 
 ### Committing
-Great, we've made changes and added them, time to package them into commit with a description.
 
-Note: first commits are always called "Initial commit:
+Now that we've made a new file, added content to it and added it to staging, time to package them into commit with a description.
 
 ```
-$ git commit -m "Initial commit"
-[master (root-commit) 21e1721] Initial Commit
- 1 file changed, 56 insertions(+)
- create mode 100644 destroy.js
+$ git commit -m "Add initial orders"
+[master (root-commit) 6323231] Initial Commit
+ 1 file changed, 1 insertions(+)
+ create mode 100644 orders.txt
 ```
 
-We've just made a commit with everything we've done until this point and given it a description "Initial commit", which means we're starting off.
+We've just made a commit with everything we've done until this point and given it a description "Add initial orders", which people will see when they look through the history of changes.
 
 Next time you made changes to a file(s), go through the adding process and then this committing process. *Rinse, repeat*.
 
---
+---
 
 For this example, lets make another commit.
 
-Open `destroy.js` and add the following line to the end:
+Open `orders.txt` and add the following line to the end:
 
-```js
-console.log('Luke, I am your father!');
-console.log('I\'m not actually, my name is YOUR_NAME...')
+```
+Bring me YOUR_NAME - I want them alive
 ```
 
 Then go through the adding the changes (above), and the commit them like we just did. 
@@ -126,7 +147,7 @@ We're going to assume you have a [Github](https://github.com/) account. Sign in 
 
 Now, on Github **make a new repo with the same name as our directory** - "deathstar"
 
-[You should see something like this](./empty-repository.png)
+![You should see something like this](./empty-repository.png)
 
 Thankfully, Github has been nice and explained how we can link our folder and this one (remote) together.
 
@@ -172,26 +193,25 @@ You can do that by going to Settings > Collaborators > Then add Dev B's username
 Dev B should now `clone` Dev A's repository on Github.
 
 ```
-$ cd /where/you/want/to/clone/it
-
-$ git clone https://github.com/DEVELOPER-A/deathstar.git
-Cloning into 'deathstar'...
+$ cd
+$ git clone https://github.com/DEVELOPER-A/deathstar.git deathstar-other
+Cloning into 'deathstar-other'...
 remote: Counting objects: 3, done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
 Receiving objects: 100% (3/3), done.
 Checking connectivity... done.
 ```
-Congrats Dev B, you just clone Dev A's work! Now `cd` into the repo and open up `destroy.js`... You should see Dev A's print statement at the end:
+Congrats Dev B, you just clone Dev A's work! Now `cd` into the repo and open up `orders.txt`... You should see Dev A's print statement at the end:
 
-```js
-console.log('I\'m not actually, my name is <DEV-A-NAME>...')
+```
+Bring me DEVELOPER-A - I want them alive
 ```
 
 ##### - Pushing to Dev A's Repo
 Okay Dev B, your time to shine!
 
-Edit the `destroy.js` to print whatever you'd like (try to be nice :P)
+Edit `orders.txt` and give (type up) any order you like.
 
 - Add the changes
 - Commit the changes
@@ -220,11 +240,11 @@ From github.com:thebearjew/deathstar
    c6ff65f..9b39773  master     -> origin/master
 Updating c6ff65f..9b39773
 Fast-forward
- destroy.js | 2 ++
+ orders.txt | 2 ++
  1 file changed, 2 insertions(+)
 ``` 
 
-Now, Dev A, open your `destroy.js` file and you should see the additions that Dev B made!
+Now, Dev A, open your `orders.txt` file and you should see the additions that Dev B made!
 
 Pulling worked!
 
@@ -233,9 +253,9 @@ Branching is actually the most important feature of Git. It allows 2 or 2,000 de
 
 So we just learned the ins-and-outs of pulling and pushing our changes (or commits) to a repository.
 
-However, **what happens if Dev A decides to rename `destroy.js` to `peace-and-love.js`**?
+However, **what happens if Dev A decides to rename `orders.txt` to `chill.txt`**?
 
-Dev B will still have their file named `destory.js`. After they edit `destory.js`, add the changes, commit them, and push them, they might get this error.
+Dev B will still have their file named `orders.txt`. After they edit `orders.txt`, add the changes, commit them, and push them, they might get this error.
 
 ```
 $ git push origin master
@@ -251,7 +271,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 Dev B is unable to push because Dev A made changes and pushed them before Dev B did. 
 
-Now Dev B should try to `$ git pull` and see what happens -> a **merge error**.
+Now Dev B should try to `$ git pull` and see what happens -> a **merge conflict**.
 
 **A merge conflict is the same as two people trying to write on the same line of paper at the same time**. We can avoid this by giving each person a copy of the paper and let them work on their own, this is **branching**.
 
@@ -284,24 +304,18 @@ master
 remote/origin/master
 ```
 
-Dev A Add the following to `destroy.js`
+Dev A Add the following to `orders.txt`
 
-```js
-console.log('You really shouldn\'t blow up planets Vader');
+```
+Come to the dark side
 ```
 
-Dev B add the following to `destroy.js`
+Dev B add the following to `orders.txt`
 
-```js
-console.log('Blowing up planets is FUN! Give me another one!');
+```
+Overthrow the emperor
 ```
 
 Both Devs add, commit, and push like so `$ git push origin feature/<YOUR_NAME>`
 
 Now check the Github repo and you should see `3 branches` at the top.
-
---
-### Merging, Pull Request, and Forking Demo
-Speakers give demo on merging branches, Github Flow, and Forking.
-
-
